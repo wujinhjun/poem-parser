@@ -14,9 +14,22 @@ import type {
   Tone,
   ToneConstraint,
   ToneAmbiguity,
-} from "../core/types.js";
-import type { ResolvedLineTemplate } from "./types.js";
-import type { RhymeDict } from "../rhyme-dict/index.js";
+} from '../core/types.js';
+import type { ResolvedLineTemplate } from './types.js';
+import type { RhymeDict } from '../rhyme-dict/index.js';
+
+/**
+ * 判断某位置是否是多音字（歧义字）
+ */
+function isAmbiguousChar(
+  ambiguities: ToneAmbiguity[],
+  lineIndex: number,
+  col: number,
+): boolean {
+  return ambiguities.some(
+    (a) => a.position.line === lineIndex && a.position.col === col,
+  );
+}
 
 /**
  * 验证单个字符是否符合模板约束
@@ -26,30 +39,31 @@ function validateSingleChar(
   constraint: ToneConstraint | undefined,
 ): { status: CharValidationStatus; isCheckable: boolean } {
   if (!constraint) {
-    return { status: "unknown", isCheckable: false };
+    return { status: 'unknown', isCheckable: false };
   }
 
   switch (constraint.type) {
-    case "flexible":
-      return { status: "flexible", isCheckable: false };
+    case 'flexible':
+      return { status: 'flexible', isCheckable: false };
 
-    case "fixed": {
+    case 'fixed': {
       if (charNode.tone === null) {
-        return { status: "unknown", isCheckable: true };
+        return { status: 'unknown', isCheckable: true };
       }
-      const matches = charNode.tone === constraint.tone ||
+      const matches =
+        charNode.tone === constraint.tone ||
         (charNode.toneOptions ?? []).includes(constraint.tone);
-      return { status: matches ? "pass" : "fail", isCheckable: true };
+      return { status: matches ? 'pass' : 'fail', isCheckable: true };
     }
 
-    case "rhyme":
+    case 'rhyme':
       return {
-        status: charNode.tone !== null ? "pass" : "unknown",
+        status: charNode.tone !== null ? 'pass' : 'unknown',
         isCheckable: true,
       };
 
     default:
-      return { status: "unknown", isCheckable: false };
+      return { status: 'unknown', isCheckable: false };
   }
 }
 
@@ -69,10 +83,14 @@ export function validateChars(
 
     if (isCheckable) {
       checkableCount += 1;
-      if (status === "pass") matchCount += 1;
+      if (status === 'pass') matchCount += 1;
     }
 
-    return { ...charNode, expectedConstraint: constraint, validationStatus: status };
+    return {
+      ...charNode,
+      expectedConstraint: constraint,
+      validationStatus: status,
+    };
   });
 
   return {
@@ -84,20 +102,26 @@ export function validateChars(
 /**
  * 行验证摘要信息
  */
+export interface CharCheck {
+  col: number;
+  char: string;
+  expected: string;
+  actual: string;
+  matched: boolean;
+  reason?: string;
+  /** 是否为多音字（歧义字） */
+  isAmbiguous: boolean;
+}
+
 export interface LineValidationSummary {
   lineIndex: number;
   checkableCount: number;
   matchedCount: number;
   mismatchCount: number;
+  /** 排除多音字后的不合规数 */
+  nonAmbiguousMismatchCount: number;
   isCompliant: boolean;
-  charChecks: Array<{
-    col: number;
-    char: string;
-    expected: string;
-    actual: string;
-    matched: boolean;
-    reason?: string;
-  }>;
+  charChecks: CharCheck[];
 }
 
 /**
@@ -106,6 +130,7 @@ export interface LineValidationSummary {
 export function validateLineAgainstPattern(
   line: LineNode,
   expectedPattern: ToneConstraint[] | undefined,
+  ambiguities: ToneAmbiguity[] = [],
 ): LineValidationSummary {
   if (!expectedPattern) {
     return {
@@ -113,13 +138,15 @@ export function validateLineAgainstPattern(
       checkableCount: 0,
       matchedCount: 0,
       mismatchCount: 0,
+      nonAmbiguousMismatchCount: 0,
       isCompliant: true,
       charChecks: line.chars.map((charNode, idx) => ({
         col: idx,
         char: charNode.char,
-        expected: "unknown",
-        actual: charNode.tone ?? "未知",
+        expected: 'unknown',
+        actual: charNode.tone ?? '未知',
         matched: true,
+        isAmbiguous: isAmbiguousChar(ambiguities, line.globalLineIndex, idx),
       })),
     };
   }
@@ -127,38 +154,55 @@ export function validateLineAgainstPattern(
   let checkableCount = 0;
   let matchedCount = 0;
   let mismatchCount = 0;
-  const charChecks: LineValidationSummary["charChecks"] = [];
+  let nonAmbiguousMismatchCount = 0;
+  const charChecks: CharCheck[] = [];
 
   line.chars = line.chars.map((charNode, idx) => {
     const constraint = expectedPattern[idx];
+    const charIsAmbiguous = isAmbiguousChar(
+      ambiguities,
+      line.globalLineIndex,
+      idx,
+    );
 
     if (!constraint) {
       charChecks.push({
         col: idx,
         char: charNode.char,
-        expected: "unknown",
-        actual: charNode.tone ?? "未知",
+        expected: 'unknown',
+        actual: charNode.tone ?? '未知',
         matched: true,
+        isAmbiguous: charIsAmbiguous,
       });
-      return { ...charNode, validationStatus: "unknown" as const, expectedConstraint: undefined };
+      return {
+        ...charNode,
+        validationStatus: 'unknown' as const,
+        expectedConstraint: undefined,
+      };
     }
 
-    if (constraint.type === "flexible") {
+    if (constraint.type === 'flexible') {
       charChecks.push({
         col: idx,
         char: charNode.char,
-        expected: "中",
-        actual: charNode.tone ?? "未知",
+        expected: '中',
+        actual: charNode.tone ?? '未知',
         matched: true,
+        isAmbiguous: charIsAmbiguous,
       });
-      return { ...charNode, validationStatus: "flexible" as const, expectedConstraint: constraint };
+      return {
+        ...charNode,
+        validationStatus: 'flexible' as const,
+        expectedConstraint: constraint,
+      };
     }
 
     checkableCount += 1;
     const matchesFixed =
-      constraint.type === "fixed" &&
-      (charNode.tone === constraint.tone || (charNode.toneOptions ?? []).includes(constraint.tone));
-    const matchesRhyme = constraint.type === "rhyme" && charNode.tone !== null;
+      constraint.type === 'fixed' &&
+      (charNode.tone === constraint.tone ||
+        (charNode.toneOptions ?? []).includes(constraint.tone));
+    const matchesRhyme = constraint.type === 'rhyme' && charNode.tone !== null;
     const isMatch = matchesFixed || matchesRhyme;
 
     if (isMatch) {
@@ -166,31 +210,44 @@ export function validateLineAgainstPattern(
       charChecks.push({
         col: idx,
         char: charNode.char,
-        expected: constraint.type === "fixed" ? constraint.tone : "韵",
-        actual: charNode.tone ?? "未知",
+        expected: constraint.type === 'fixed' ? constraint.tone : '韵',
+        actual: charNode.tone ?? '未知',
         matched: true,
+        isAmbiguous: charIsAmbiguous,
       });
-      return { ...charNode, validationStatus: "pass" as const, expectedConstraint: constraint };
+      return {
+        ...charNode,
+        validationStatus: 'pass' as const,
+        expectedConstraint: constraint,
+      };
     }
 
     mismatchCount += 1;
-    const actualTone = charNode.tone ?? "未知";
-    const unresolved = actualTone === "未知";
+    if (!charIsAmbiguous) {
+      nonAmbiguousMismatchCount += 1;
+    }
+    const actualTone = charNode.tone ?? '未知';
+    const unresolved = actualTone === '未知';
 
     charChecks.push({
       col: idx,
       char: charNode.char,
-      expected: constraint.type === "fixed" ? constraint.tone : "韵",
+      expected: constraint.type === 'fixed' ? constraint.tone : '韵',
       actual: actualTone,
       matched: false,
       reason: unresolved
-        ? "tone_unresolved"
-        : constraint.type === "fixed"
-          ? "tone_mismatch"
-          : "rhyme_unresolved",
+        ? 'tone_unresolved'
+        : constraint.type === 'fixed'
+          ? 'tone_mismatch'
+          : 'rhyme_unresolved',
+      isAmbiguous: charIsAmbiguous,
     });
 
-    return { ...charNode, validationStatus: "fail" as const, expectedConstraint: constraint };
+    return {
+      ...charNode,
+      validationStatus: 'fail' as const,
+      expectedConstraint: constraint,
+    };
   });
 
   return {
@@ -198,6 +255,7 @@ export function validateLineAgainstPattern(
     checkableCount,
     matchedCount,
     mismatchCount,
+    nonAmbiguousMismatchCount,
     isCompliant: mismatchCount === 0,
     charChecks,
   };
@@ -206,7 +264,10 @@ export function validateLineAgainstPattern(
 /**
  * 应用拗救标记到行
  */
-export function applyRescueMarks(currentLine: LineNode, rescues: RescueDetail[]): LineNode {
+export function applyRescueMarks(
+  currentLine: LineNode,
+  rescues: RescueDetail[],
+): LineNode {
   if (rescues.length === 0) return currentLine;
 
   const rescuedCols = rescues
@@ -218,8 +279,8 @@ export function applyRescueMarks(currentLine: LineNode, rescues: RescueDetail[])
   return {
     ...currentLine,
     chars: currentLine.chars.map((char, idx) =>
-      rescuedCols.includes(idx) && char.validationStatus === "fail"
-        ? { ...char, validationStatus: "rescued" as const }
+      rescuedCols.includes(idx) && char.validationStatus === 'fail'
+        ? { ...char, validationStatus: 'rescued' as const }
         : char,
     ),
   };
@@ -250,7 +311,7 @@ export function validateRhyme(
   return {
     isRhymeLine: true,
     rhymeChar: lastChar.char,
-    rhymeGroup: lastChar.rhymeGroup ?? "",
+    rhymeGroup: lastChar.rhymeGroup ?? '',
     expectedRhymeGroup,
     isConsistent,
   };

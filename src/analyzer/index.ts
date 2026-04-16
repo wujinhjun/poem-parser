@@ -70,7 +70,10 @@ export interface AnalysisResult {
   bestMatch: MatchResult | null;
   diagnostics: Diagnostic[];
   ambiguities: ToneAmbiguity[];
+  /** 是否符合格律（包括多音字） */
   isCompliant: boolean;
+  /** 排除多音字后是否完全合规 */
+  fullyCompliant: boolean;
   complianceRate: number;
   lineValidations: LineValidationSummary[];
   summary: string;
@@ -270,22 +273,32 @@ export async function analyze(input: string, options: AnalyzeOptions): Promise<A
     bestMeterTemplate,
   );
 
+  // 按字符去重（同一字多次出现只保留一个）
+  const seenChars = new Set<string>();
+  const uniqueAmbiguities = filteredAmbiguities.filter((amb) => {
+    if (seenChars.has(amb.char)) return false;
+    seenChars.add(amb.char);
+    return true;
+  });
+
   const lineValidations = ast.lines.map((line) =>
-    validateLineAgainstPattern(line, line.expectedPattern),
+    validateLineAgainstPattern(line, line.expectedPattern, uniqueAmbiguities),
   );
 
   const totalCheckable = lineValidations.reduce((sum, item) => sum + item.checkableCount, 0);
   const totalMatched = lineValidations.reduce((sum, item) => sum + item.matchedCount, 0);
   const complianceRate = totalCheckable > 0 ? totalMatched / totalCheckable : 1;
   const isCompliant = lineValidations.every((item) => item.isCompliant);
+  const fullyCompliant = lineValidations.every((item) => item.nonAmbiguousMismatchCount === 0);
 
   return {
     ast,
     matchResults,
     bestMatch,
     diagnostics: ast.diagnostics,
-    ambiguities: filteredAmbiguities,
+    ambiguities: uniqueAmbiguities,
     isCompliant,
+    fullyCompliant,
     complianceRate,
     lineValidations,
     summary: bestMatch
