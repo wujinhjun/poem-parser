@@ -91,9 +91,29 @@ class JsonRhymeDict implements RhymeDict {
       }));
 
     const knownPrimary = primary.filter((entry) => entry.tone !== Tone.Unknown);
-    if (knownPrimary.length > 0) return knownPrimary;
-
     const fallback = buildFallbackEntries(char, this.toneLookup);
+    const toneInfo = this.toneLookup[char];
+
+    // 当 tone-lookup 标记为"多"（多音字）时，即使 knownPrimary 有内容，
+    // 也需要合并 fallback 以返回所有可能的音调
+    if (knownPrimary.length > 0) {
+      if (toneInfo === "多" && fallback.length > 0) {
+        // 多音字：将 fallback 的音调合并到已知的韵部中
+        const merged: RhymeEntry[] = [];
+        for (const primaryEntry of knownPrimary) {
+          for (const fallbackEntry of fallback) {
+            merged.push({
+              char,
+              tone: fallbackEntry.tone,
+              rhymeGroup: primaryEntry.rhymeGroup,
+            });
+          }
+        }
+        return merged;
+      }
+      return knownPrimary;
+    }
+
     if (fallback.length === 0) return primary;
     if (primary.length === 0) return fallback;
 
