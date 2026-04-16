@@ -41,17 +41,25 @@ function printSection(title, result) {
     `ambiguities: ${result.ambiguities.map((item) => item.char).join(', ') || '(none)'}`,
   );
   console.log(`isCompliant: ${result.isCompliant}`);
+  console.log(`fullyCompliant: ${result.fullyCompliant} (排除多音字后)`);
   console.log(`complianceRate: ${(result.complianceRate * 100).toFixed(1)}%`);
   console.log('lineValidations:');
   result.lineValidations.forEach((item) => {
+    const ambiguousChars = item.charChecks.filter((check) => check.isAmbiguous);
+    const ambiguityNote = ambiguousChars.length > 0
+      ? ` [多音字: ${ambiguousChars.map(c => `字${c.col+1}「${c.char}」`).join(', ')}]`
+      : '';
+
     console.log(
-      `  line ${item.lineIndex + 1}: ${item.matchedCount}/${item.checkableCount} matched, mismatches=${item.mismatchCount}, compliant=${item.isCompliant}`,
+      `  line ${item.lineIndex + 1}: ${item.matchedCount}/${item.checkableCount} matched, mismatches=${item.mismatchCount}${ambiguityNote}, compliant=${item.isCompliant}`,
     );
+
     const mismatchDetails = item.charChecks.filter((check) => !check.matched);
     if (mismatchDetails.length > 0) {
       mismatchDetails.forEach((check) => {
+        const ambTag = check.isAmbiguous ? ' [多音字]' : '';
         console.log(
-          `    - 字${check.col + 1}「${check.char}」 expected=${check.expected}, actual=${check.actual}, reason=${check.reason ?? "n/a"}`,
+          `    - 字${check.col + 1}「${check.char}」 expected=${check.expected}, actual=${check.actual}, reason=${check.reason ?? 'n/a'}${ambTag}`,
         );
       });
     }
@@ -61,9 +69,10 @@ function printSection(title, result) {
 }
 
 const specifiedResult = await analyze(text, {
-  rhymeDictType: 'pingshui',
+  rhymeDictType: 'cilin',
   preferredType: 'ci',
   templateId: '水调歌头',
+  variantId: '水调歌头-v3',
   strictMode: true,
 });
 printSection('指定模板（水调歌头）', specifiedResult);
