@@ -1,0 +1,6381 @@
+[
+  {
+    "name": "南乡子",
+    "desc": "唐教坊曲名。此词有单调、双调。单调者始自欧阳炯词，冯延巳、李珣俱本此添字。双调者始自冯延巳词。《太和正音谱》注“越调”。欧阳修本此减字，王之道、黄机、赵长卿俱本此添字也。",
+    "formats": [
+      {
+        "sketch": "单调二十七字，五句两平韵、三仄韵",
+        "author": "欧阳炯",
+        "desc": "此词单遍，平仄两韵，与宋人两段全押平韵者异。其可平可仄，即参谱内诸词。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "单调二十八字，五句两平韵、三仄韵",
+        "author": "欧阳炯",
+        "desc": "此与“画舸停桡”词同，惟第四句添一字。欧词六首，与此悉同。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "单调二十八字，五句两平韵、三仄韵",
+        "author": "冯延巳",
+        "desc": "此与欧阳炯“画舸停桡”词同，惟起句添一字。\n按《阳春集》冯词二首悉同。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "单调三十字，六句两平韵、三仄韵",
+        "author": "李珣",
+        "desc": "此亦与欧阳炯“路入南中”词同，惟起作三字两句异。唐人知音律，类能添字，此即宋词衬字所自出也。\n按《花间集》李词十首，其别首第一句“栊云髻”，“栊”字仄声，“云”字平声。第四句“回塘深处遥相见”，“回”、“塘”二字俱平声，“处”字仄声，“相”字平声。第五句“争窈窕”，“窈”字仄声，又“送春浦”，“送”字仄声，结句“缓唱棹歌极浦去”，“缓”字、“极”字俱仄声，谱内可平可仄据此。",
+        "tunes": [
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十四字，前后段各五句、四平韵",
+        "author": "欧阳修",
+        "desc": "此即欧阳炯“画舸停桡”词体再加一叠，惟第四、五句仍用平韵耳。\n按欧集三词悉同。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十六字，前后段各五句、四平韵",
+        "author": "冯延巳",
+        "desc": "此即“细雨湿秋风”词体再加一叠，只第四、五句仍用平韵耳。宋元人俱如此填。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十六字，前后段各五句、四平韵",
+        "author": "王之道",
+        "desc": "此即“细雨湿流光”词体，惟前后段第三、四句作四字一句、五字一句异。",
+        "tunes": [
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十八字，前后段各六句、四平韵",
+        "author": "黄机",
+        "desc": "此亦“细雨湿流光”词体，惟前后段第三句添一字，作四字两句异。",
+        "tunes": [
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十八字，前后段各六句、四平韵",
+        "author": "赵长卿",
+        "desc": "此亦“细雨湿流光”词体，惟前后段第二句添一字，作四字两句异。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "格一",
+        "author": "欧阳炯",
+        "desc": "",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "南歌子",
+    "desc": "唐教坊曲名。此词有单调、双调。单调者始自温庭筠词，因词有“恨春宵”句，名《春宵曲》。张泌词本此添字，因词有“高卷水晶帘额”句，名《水晶帘》，又有“惊破碧窗残梦”句，名《碧窗梦》。郑子聃有《我爱沂阳好》词十首，更名《十爱词》。双调者有平韵、仄韵两体。平韵者始自毛熙震词，周邦彦、杨无咎、僧挥五十四字体，无名氏五十三字体，俱本此添字。仄韵者始自《乐府雅词》，惟石孝友词最为谐婉。周邦彦词名《南柯子》，程垓词名《望秦川》，田不伐词有“帘风不动蝶交飞”句，名《风蝶令》。",
+    "formats": [
+      {
+        "sketch": "单调二十三字，五句三平韵",
+        "author": "温庭筠",
+        "desc": "按温庭筠词共七首，平仄如一，填者宜遵之。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "单调二十六字，五句三平韵",
+        "author": "张泌",
+        "desc": "此词第三句七字，第四句六字异。\n按欧阳炯词第三句“迢迢永夜梦难成”，上“迢”字平声，“永”字仄声。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十二字，前后段各四句、三平韵",
+        "author": "毛熙震",
+        "desc": "此词前后两结，或上六字读、下三字句，或上四字读、下五字句，须蝉联不断，可读不可句。词中此等句法最多，可以类推。如此词两结，俱作上六下三句读，宋词本此填者甚多。苏轼词“正是一年春好、近清明”、“此乐无声无味、最难名”，秦观词“天外不知音耗、百般猜”、“只恐又抛人去、几时来”，正与此同。\n《花间集》毛词别首起句“远山愁黛碧”，“山”字平声，“黛”字仄声。又秦观词起句“愁鬓香云坠”，“愁”字平声。第二句“娇眸冰雪裁”，“冰”字平声。第三句“月明风幌为谁开”，“月”字仄声，“风”字平声。陈师道词第四句“人在笙歌声里、暗生春”，“人”字、“笙”字俱平声。后段起句“今代无双士”，“今”字平声。第三句“杯行到手莫辞频”，“杯”字平声，“到”字仄声。第四句“明日凤池归路、隔清尘”，“明”字平声，“凤”字仄声。又贺铸词前后两结句“何处飞来白鹭、立移时”、“睡起芭蕉叶上、自题诗”，“白”字、“叶”字俱仄声。谱内可平可仄据此。",
+        "tunes": [
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十二字，前后段各四句、三平韵",
+        "author": "辛弃疾",
+        "desc": "此词前后两结，上作四字一读，下作五字一句，与毛词小异。宋词如此填者甚多，赵师侠词“唤渡沙头、款款话离情”、“一片潇湘、真个画难成”，范成大词“可惜高楼、不近木兰舟”、“江已东流、那肯更西流”，正与此同。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十三字，前后段各四句、三平韵",
+        "author": "《花草粹编》无名氏",
+        "desc": "此与辛词同，惟后结多一字。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十四字，前后段各四句、三平韵",
+        "author": "周邦彦",
+        "desc": "此词前后两结俱上六下四句法，较毛词各多一字。\n按僧挥词起句“金甃蟠龙尾”，“金”字平声。第三句“凉生宫殿不因秋”，“凉”字平声。第四句“门外莫寻尘世、捲地江流”，“门”字平声，“莫”字、“捲”字俱仄声。又杨无咎词后段起句“罗绮纷香陌”，“罗”字平声。结句“借问谪仙何在，今为谁明”，“借”字仄声，“今”字平声。又一首后段第三句“蓬仙应是隐鳌头”，“蓬”字平声。结句“谁道于今双鬓、犹自淹留”，“于”字平声。谱内可平可仄据此。",
+        "tunes": [
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调五十二字，前后段各四句、三仄韵",
+        "author": "石孝友",
+        "desc": "此词用仄韵，其字句与毛锡震平韵词同。\n按宋沈伯时《乐府指迷》“论平声字可以入声替”，如此词本平声韵，今更入声韵是也。曾慥《乐府雅词》录无名氏词亦入声韵，前段“阁儿虽不大，都无半点俗。窗儿根底数竿竹。画展江南山景、两三幅。”后段“彝鼎烧异香，胆瓶插嫩菊。翛然无事净心目，共那人人、相对弈棋局。”其前后段起二句平仄微拗，不若此词谐婉也。",
+        "tunes": [
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "定格",
+        "author": "张泌",
+        "desc": "",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调",
+        "author": "吕本中",
+        "desc": "搜韵君按：此双调词格，为搜韵依据原书例词及单调格式扩展。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "南浦",
+    "desc": "按唐《教坊记》有《南浦子》曲，宋词盖借旧曲名，另倚新声也。\n　　此调有仄韵、平韵两体，宋人多填仄韵词，其平韵惟鲁词一体。",
+    "formats": [
+      {
+        "sketch": "双调一百五字，前后段各十句、五仄韵",
+        "author": "程垓",
+        "desc": "此调程词及周词、史词三体，宋元人填者甚少，惟张炎词体，填者颇多，故此词以张词作谱。\n此词前后段第八句俱押韵。",
+        "tunes": [
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调一百五字，前段十句四仄韵，后段九句四仄韵",
+        "author": "周邦彦",
+        "desc": "此与程词同，惟前后段第八句俱作五字不押韵，第九句作四字，后段第二、三句作九字一句异。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调一百五字，前后段各十句、四仄韵",
+        "author": "史达祖",
+        "desc": "此与程词同，惟前后段第八句俱不押韵异。",
+        "tunes": [
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调一百五字，前段九句四仄韵，后段八句五仄韵",
+        "author": "张炎",
+        "desc": "此与程词同，惟前后段第八、九、十句摊破句法作七字一句、六字一句异。按王沂孙、张翥、陶宗仪俱如此填。\n王词前段第五句“巴山路、蛾眉乍窥清镜”，“眉”字平声。第六句“绿痕无迹”，“绿”字仄声。陶词第七句“鸥旁常是寻盟去”，“鸥”字平声。张词结句“秋满鹤汀凫渚”，“秋”字平声。陶词后段第二句“荡晴晖、另有越中真趣”，“越”字仄声。王词第四句“蘋花岸、漠漠雨昏烟冥”，上“漠”字仄声。陶词第五句“水荭摇晚”，“水”字仄声。第七句“欲问渔郎无恙否”，“欲”字仄声。谱内可平可仄据此，馀参上三词。\n王词前后两结句“弄波素袜至甚处，空把落红流尽”、“只愁双燕衔春去，拂破蓝光千顷”，又一首“再来涨绿迷旧处，添却残红几片”、“采香幽径鸳鸯睡，谁道湔裙人远”，与调不合，故不参校入谱。",
+        "tunes": [
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "未知",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      },
+      {
+        "sketch": "双调一百二字，前段九句四平韵，后段八句四平韵",
+        "author": "鲁逸仲",
+        "desc": "此调押平声韵者只此一词，无别首宋词可校。",
+        "tunes": [
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "读",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "南乡一剪梅",
+    "desc": "每段上三句《南乡子》体，下二句《一剪梅》体。",
+    "formats": [
+      {
+        "sketch": "双调五十四字，前后段各五句，三平韵、一叠韵",
+        "author": "虞集",
+        "desc": "旧谱以此与《江月晃重山》词皆为犯调，不知宋词名“犯”者，取宫调相犯之意，如仙吕调犯商调，为羽犯商类，从来未有以两调相犯为犯者。南北曲如此者更多，其误至今犹相沿也。",
+        "tunes": [
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "叠",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "叠",
+            "shift": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "南州春色",
+    "desc": "调见元陶豰《辍耕录》，因词中有“管取南州春色”句，取以为名。",
+    "formats": [
+      {
+        "sketch": "双调八十二字，前段九句四平韵，后段八句三平韵",
+        "author": "汪梅溪",
+        "desc": "《花草粹编》有此词，采之《辍耕录》，为汪梅溪作，元人也。其名无考，其平仄亦无别词可校。",
+        "tunes": [
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "读",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "rhythm": "句",
+            "shift": true
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "仄",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "shift": false
+          },
+          {
+            "tune": "平",
+            "rhythm": "韵",
+            "shift": true
+          }
+        ]
+      }
+    ]
+  }
+]

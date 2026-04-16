@@ -90,7 +90,9 @@ function tuneToConstraint(
 function loadCiTuneIndex(): CiTuneIndexItem[] {
   if (ciTuneIndexCache) return ciTuneIndexCache;
   const indexPath = resolve(process.cwd(), "data", "ci-tunes-index.json");
-  ciTuneIndexCache = JSON.parse(readFileSync(indexPath, "utf8")) as CiTuneIndexItem[];
+  const raw = JSON.parse(readFileSync(indexPath, "utf8"));
+  // 支持新旧两种格式：旧格式是数组，新格式是 {groups, index}
+  ciTuneIndexCache = (Array.isArray(raw) ? raw : raw.groups) as CiTuneIndexItem[];
   return ciTuneIndexCache;
 }
 
@@ -283,7 +285,9 @@ export function loadMeterTemplates(): MeterTemplate[] {
 
 export function loadCiTemplates(options?: { limit?: number }): CiTemplate[] {
   const index = loadCiTuneIndex();
-  const selected = options?.limit ? index.slice(0, options.limit) : index;
+  // 过滤掉分组条目（isGroup: true 的）
+  const individualEntries = index.filter((item) => !(item as any).isGroup);
+  const selected = options?.limit ? individualEntries.slice(0, options.limit) : individualEntries;
   return selected.map(buildCiTemplateFromIndexItem).filter((item) => item.variants.length > 0);
 }
 

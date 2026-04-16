@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-04-15T17:07:47.202Z",
+  "rhyme": {
+    "totalChars": 9178,
+    "totalEntries": 28186,
+    "byDictType": {
+      "pingshui": {
+        "uniqueRhymeGroups": 105,
+        "entries": 10378
+      },
+      "cilin": {
+        "uniqueRhymeGroups": 33,
+        "entries": 5395
+      },
+      "zhonghua_new": {
+        "uniqueRhymeGroups": 14,
+        "entries": 7380
+      },
+      "ci_rhyme": {
+        "uniqueRhymeGroups": 20,
+        "entries": 5033
+      }
+    }
+  },
+  "toneLookupSize": 8232,
+  "explainLookupSize": 3931,
+  "ciTuneCount": 818
+}
