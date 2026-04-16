@@ -117,7 +117,7 @@ function buildCiTemplateFromIndexItem(item: CiTuneIndexItem): CiTemplate {
       if (tuneItem.shift) {
         currentLine.rhymeSwitch = tuneItem.tune === "仄" ? "ze" : "ping";
       }
-      if (tuneItem.rhythm === "句") {
+      if (tuneItem.rhythm === "句" || tuneItem.rhythm === "韵") {
         lines.push(currentLine);
         currentLine = {
           charCount: 0,

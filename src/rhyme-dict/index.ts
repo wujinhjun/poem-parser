@@ -81,7 +81,59 @@ class JsonRhymeDict implements RhymeDict {
   }
 
   public lookup(char: string): RhymeEntry[] {
+    // 优先从 tone-lookup 获取音调信息（更完整）
+    const toneInfo = this.toneLookup[char];
     const raw = this.index[char] ?? [];
+
+    // 获取当前韵书类型的韵部信息
+    const rhymeGroupsForType = raw
+      .filter((entry) => entry.dictType === this.type)
+      .map((entry) => entry.rhymeGroup)
+      .filter(Boolean);
+
+    // 如果 tone-lookup 有记录，以它为准
+    if (toneInfo && toneInfo !== "未知") {
+      const toneEntries: RhymeEntry[] = [];
+
+      if (toneInfo === "平") {
+        // 单音平声：使用韵书中的韵部
+        const groups = rhymeGroupsForType.length > 0 ? rhymeGroupsForType : [""];
+        for (const group of groups) {
+          toneEntries.push({ char, tone: Tone.Ping, rhymeGroup: group });
+        }
+      } else if (toneInfo === "仄") {
+        // 单音仄声
+        const groups = rhymeGroupsForType.length > 0 ? rhymeGroupsForType : [""];
+        for (const group of groups) {
+          toneEntries.push({ char, tone: Tone.Ze, rhymeGroup: group });
+        }
+      } else if (toneInfo === "多") {
+        // 多音字：同时返回平仄两种
+        const pingGroups = rhymeGroupsForType.length > 0
+          ? rhymeGroupsForType
+          : [""];
+        for (const group of pingGroups) {
+          toneEntries.push({ char, tone: Tone.Ping, rhymeGroup: group });
+        }
+        // 仄声也尝试获取韵部
+        const zeGroups = raw
+          .filter((entry) => entry.dictType === this.type && entry.tone === "仄")
+          .map((entry) => entry.rhymeGroup)
+          .filter(Boolean);
+        const finalZeGroups = zeGroups.length > 0 ? zeGroups : [""];
+        for (const group of finalZeGroups) {
+          toneEntries.push({ char, tone: Tone.Ze, rhymeGroup: group });
+        }
+      }
+
+      // 如果有有效音调，直接返回（去重）
+      const validEntries = toneEntries.filter(e => e.tone !== Tone.Unknown);
+      if (validEntries.length > 0) {
+        return validEntries;
+      }
+    }
+
+    // fallback：使用 rhyme-char-index 的数据
     const primary = raw
       .filter((entry) => entry.dictType === this.type)
       .map((entry) => ({
@@ -91,44 +143,9 @@ class JsonRhymeDict implements RhymeDict {
       }));
 
     const knownPrimary = primary.filter((entry) => entry.tone !== Tone.Unknown);
-    const fallback = buildFallbackEntries(char, this.toneLookup);
-    const toneInfo = this.toneLookup[char];
+    if (knownPrimary.length > 0) return knownPrimary;
 
-    // 当 tone-lookup 标记为"多"（多音字）时，即使 knownPrimary 有内容，
-    // 也需要合并 fallback 以返回所有可能的音调
-    if (knownPrimary.length > 0) {
-      if (toneInfo === "多" && fallback.length > 0) {
-        // 多音字：将 fallback 的音调合并到已知的韵部中
-        const merged: RhymeEntry[] = [];
-        for (const primaryEntry of knownPrimary) {
-          for (const fallbackEntry of fallback) {
-            merged.push({
-              char,
-              tone: fallbackEntry.tone,
-              rhymeGroup: primaryEntry.rhymeGroup,
-            });
-          }
-        }
-        return merged;
-      }
-      return knownPrimary;
-    }
-
-    if (fallback.length === 0) return primary;
-    if (primary.length === 0) return fallback;
-
-    // 主字典只有韵部、无可用平仄时：用 fallback 声调回填，保留主字典韵部。
-    const merged: RhymeEntry[] = [];
-    for (const primaryEntry of primary) {
-      for (const fallbackEntry of fallback) {
-        merged.push({
-          char,
-          tone: fallbackEntry.tone,
-          rhymeGroup: primaryEntry.rhymeGroup,
-        });
-      }
-    }
-    return merged;
+    return primary;
   }
 
   public getRhymeGroup(char: string): string[] {
