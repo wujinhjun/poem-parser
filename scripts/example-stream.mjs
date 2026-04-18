@@ -1,4 +1,4 @@
-import { analyzeStream } from '../dist/analyzer/index.js';
+import { analyzeStream } from '../dist/analyzer/stream.js';
 
 async function main() {
   // 测试：苏轼《水调歌头》前60字

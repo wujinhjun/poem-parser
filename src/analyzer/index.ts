@@ -6,16 +6,13 @@
  * @module analyzer
  */
 
+import type { RhymeDictType } from "../core/types.js";
 import type {
-  CharNode,
   Diagnostic,
   LineNode,
   LineValidationResult,
   PoemAST,
-  RhymeDictType,
-  Tone,
   ToneAmbiguity,
-  ToneConstraint,
 } from "../core/types.js";
 import { lex } from "../lexer/index.js";
 import { matchTemplate, MatchResult } from "../matcher/index.js";
@@ -25,14 +22,18 @@ import { analyzeRescue } from "../rescue/index.js";
 import {
   AnyTemplate,
   CiTemplate,
-  CiTemplateVariant,
   getTemplateById,
   MeterTemplate,
 } from "../templates/index.js";
 import { buildAstFromAnnotation, buildCouplets, applyMeterTemplateToAst, buildLexResultFromRawLines } from "./ast.js";
 import { validateChars, validateLineAgainstPattern, applyRescueMarks, validateRhyme } from "./validation.js";
 import { chooseCiVariant, applyCiVariantToAst } from "./ci.js";
+import { resolveLineTemplate, getTemplateType } from "./templates.js";
+import { analyzeStream } from "./stream.js";
 import type { ResolvedLineTemplate, CiVariantScore } from "./types.js";
+
+export { analyzeStream };
+export type { StreamAnalyzeResult, StreamSegment } from "./stream.js";
 
 // ============ 公共导出类型 ============
 
@@ -90,12 +91,6 @@ function splitCiLines(input: string): string[] {
     .filter(Boolean);
 }
 
-function getTemplateType(templateId: string): "lüshi" | "jueju" | "ci" {
-  if (templateId.includes("lü")) return "lüshi";
-  if (templateId.includes("jue")) return "jueju";
-  return "ci";
-}
-
 function buildAnnotatedLineNode(params: {
   text: string;
   globalLineIndex: number;
@@ -121,68 +116,6 @@ function buildAnnotatedLineNode(params: {
     globalLineIndex: params.globalLineIndex,
     isRhymeLine: false,
     diagnostics: [],
-  };
-}
-
-function resolveLineTemplate(context: {
-  templateId: string;
-  variantId?: string;
-  globalLineIndex: number;
-  sectionIndex?: number;
-  lineIndexInSection?: number;
-}): ResolvedLineTemplate {
-  const template = getTemplateById(context.templateId);
-  if (!template) {
-    throw new Error(`Template not found in analyzeLine: ${context.templateId}`);
-  }
-
-  if ("pattern" in template) {
-    const meter = template as MeterTemplate;
-    const expectedPattern = meter.pattern[context.globalLineIndex];
-    if (!expectedPattern) {
-      throw new Error(`Line index ${context.globalLineIndex} out of range for ${context.templateId}`);
-    }
-    return {
-      templateId: meter.id,
-      expectedPattern,
-      charCount: expectedPattern.length,
-      isRhymeLine: meter.rhymeLineIndices.includes(context.globalLineIndex),
-    };
-  }
-
-  const ciTemplate = template as CiTemplate;
-  const variant: CiTemplateVariant | undefined = context.variantId
-    ? ciTemplate.variants.find((item) => item.id === context.variantId)
-    : ciTemplate.variants[0];
-  if (!variant) {
-    throw new Error(`Variant not found in template ${context.templateId}`);
-  }
-
-  const allLines = variant.sections.flatMap((section, sectionIndex) =>
-    section.lines.map((line, idxInSection) => ({
-      line,
-      sectionIndex,
-      sectionName: section.name,
-      idxInSection,
-    })),
-  );
-
-  const entry = allLines[context.globalLineIndex];
-  if (!entry) {
-    throw new Error(`Global line index ${context.globalLineIndex} out of range for ${context.templateId}`);
-  }
-
-  const resolvedLine = entry.line;
-  return {
-    templateId: ciTemplate.id,
-    variantId: variant.id,
-    expectedPattern: resolvedLine.pattern,
-    charCount: resolvedLine.charCount,
-    isRhymeLine: resolvedLine.isRhymeLine,
-    expectedRhymeType: resolvedLine.rhymeType,
-    rhymeSwitch: resolvedLine.rhymeSwitch,
-    sectionInfo: { index: entry.sectionIndex, name: entry.sectionName },
-    lineIndexInSection: entry.idxInSection,
   };
 }
 
@@ -436,247 +369,3 @@ export async function analyzeLine(
 }
 
 export type { MatchResult, AnyTemplate };
-
-// ============ 流式解析 API ============
-
-export interface StreamSegment {
-  /** 片段序号（从0开始） */
-  segmentIndex: number;
-  /** 片段文本 */
-  text: string;
-  /** 该片段字数 */
-  charCount: number;
-  /** 所属句序号（从0开始） */
-  sentenceIndex: number;
-  /** 该句总字数 */
-  sentenceCharCount: number;
-  /** 该句还差多少字 */
-  sentenceRemaining: number;
-  /** 该片段在句内的字符位置 */
-  startCol: number;
-  /** 校验结果 */
-  validation: {
-    matchedCount: number;
-    checkableCount: number;
-    mismatches: Array<{
-      col: number;
-      char: string;
-      expected: string;
-      actual: string;
-      reason?: string;
-    }>;
-  };
-}
-
-export interface StreamAnalyzeResult {
-  /** 模板ID */
-  templateId: string;
-  /** 变体ID（仅词牌） */
-  variantId?: string;
-  /** 模板总句数 */
-  totalSentences: number;
-  /** 模板每句字数 */
-  sentenceCharCounts: number[];
-  /** 输入总字数 */
-  totalCharCount: number;
-  /** 已解析句数 */
-  parsedSentenceCount: number;
-  /** 片段详情 */
-  segments: StreamSegment[];
-  /** 每句的汇总 */
-  sentenceSummaries: Array<{
-    sentenceIndex: number;
-    sentenceCharCount: number;
-    charCount: number;
-    remaining: number;
-    isComplete: boolean;
-    isValid: boolean;
-    matchedCount: number;
-    checkableCount: number;
-  }>;
-}
-
-/**
- * 流式解析 - 按顺序解析输入文本
- *
- * 特点：
- * - 支持诗词/词牌/律诗/绝句
- * - 按顺序解析，有字即校验
- * - 输入不完整时只校验已有部分
- * - 返回每个位置与模板的匹配情况
- *
- * @param input 输入文本（连续字符串）
- * @param templateId 模板ID
- * @param variantId 变体ID（仅词牌）
- * @param rhymeDictType 韵书类型
- */
-export async function analyzeStream(
-  input: string,
-  templateId: string,
-  options: {
-    variantId?: string;
-    rhymeDictType: RhymeDictType;
-  },
-): Promise<StreamAnalyzeResult> {
-  const template = getTemplateById(templateId);
-  if (!template) {
-    throw new Error(`模板不存在: ${templateId}`);
-  }
-
-  const dict = await createRhymeDict(options.rhymeDictType);
-
-  // 根据模板类型确定解析方式
-  const isCi = !("pattern" in template);
-
-  // 流式分句：按句子分隔符号分割
-  const normalized = input.replace(/\r\n?/g, "\n").replace(/\s+/g, "");
-  const sentences = normalized.split(/[，。！？；、\n]/u).map((s) => s.trim()).filter(Boolean);
-
-  // 获取每句的期望字数
-  const sentenceCharCounts: number[] = [];
-  let globalLineIndex = 0;
-
-  if (isCi) {
-    const ciTemplate = template as CiTemplate;
-    const variant = options.variantId
-      ? ciTemplate.variants.find((v) => v.id === options.variantId)
-      : ciTemplate.variants[0];
-    if (!variant) throw new Error(`变体不存在: ${options.variantId}`);
-
-    for (const section of variant.sections) {
-      for (const line of section.lines) {
-        sentenceCharCounts.push(line.charCount);
-      }
-    }
-  } else {
-    const meter = template as MeterTemplate;
-    for (const pattern of meter.pattern) {
-      sentenceCharCounts.push(pattern.length);
-    }
-  }
-
-  const segments: StreamSegment[] = [];
-  const sentenceSummaries: StreamAnalyzeResult["sentenceSummaries"] = [];
-
-  let charIndex = 0;
-  let parsedSentenceCount = 0;
-
-  for (let si = 0; si < sentences.length; si++) {
-    const sentence = sentences[si];
-    const expectedCount = sentenceCharCounts[si] ?? 0;
-    const sentenceChars = [...sentence]; // 拆成单字
-
-    let sentenceMatched = 0;
-    let sentenceCheckable = 0;
-    let sentenceMismatches: StreamSegment["validation"]["mismatches"] = [];
-
-    for (let ci = 0; ci < sentenceChars.length; ci++) {
-      const char = sentenceChars[ci];
-      const col = ci;
-
-      // 获取该位置的模板约束
-      let expected: ToneConstraint | undefined;
-      if (isCi) {
-        const ciTemplate = template as CiTemplate;
-        const variant = options.variantId
-          ? ciTemplate.variants.find((v) => v.id === options.variantId)
-          : ciTemplate.variants[0];
-        const allLines = variant!.sections.flatMap((s) => s.lines);
-        expected = allLines[globalLineIndex]?.pattern[col];
-      } else {
-        expected = (template as MeterTemplate).pattern[globalLineIndex]?.[col];
-      }
-
-      // 直接查字典获取音韵信息
-      const entries = dict.lookup(char);
-      const uniqueTones = [...new Set(entries.map((e) => e.tone))];
-      const primaryTone = uniqueTones.length === 1 ? uniqueTones[0] : entries[0]?.tone ?? null;
-
-      // 校验
-      let matched = false;
-      let expectedStr = "unknown";
-      let actualStr = primaryTone ?? "未知";
-      let reason: string | undefined;
-
-      if (expected) {
-        sentenceCheckable++;
-        if (expected.type === "fixed") {
-          expectedStr = expected.tone;
-          if (
-            primaryTone === expected.tone ||
-            uniqueTones.includes(expected.tone)
-          ) {
-            matched = true;
-            sentenceMatched++;
-          } else {
-            reason = primaryTone === null ? "tone_unresolved" : "tone_mismatch";
-          }
-        } else if (expected.type === "rhyme") {
-          expectedStr = "韵";
-          if (primaryTone !== null) {
-            matched = true;
-            sentenceMatched++;
-          } else {
-            reason = "rhyme_unresolved";
-          }
-        } else {
-          // flexible
-          matched = true;
-          sentenceMatched++;
-        }
-      } else {
-        expectedStr = "unknown";
-        matched = true; // 超长部分不校验
-      }
-
-      segments.push({
-        segmentIndex: charIndex,
-        text: char,
-        charCount: 1,
-        sentenceIndex: si,
-        sentenceCharCount: expectedCount,
-        sentenceRemaining: expectedCount - ci - 1,
-        startCol: col,
-        validation: {
-          matchedCount: matched ? 1 : 0,
-          checkableCount: expected ? 1 : 0,
-          mismatches: matched ? [] : [{ col, char, expected: expectedStr, actual: actualStr, reason }],
-        },
-      });
-
-      charIndex++;
-    }
-
-    // 该句结束时检查是否完整
-    const isComplete = sentenceChars.length >= expectedCount;
-    const isValid = sentenceMismatches.length === 0;
-
-    sentenceSummaries.push({
-      sentenceIndex: si,
-      sentenceCharCount: expectedCount,
-      charCount: sentenceChars.length,
-      remaining: expectedCount - sentenceChars.length,
-      isComplete,
-      isValid,
-      matchedCount: sentenceMatched,
-      checkableCount: sentenceCheckable,
-    });
-
-    if (isComplete) {
-      parsedSentenceCount++;
-    }
-
-    globalLineIndex++;
-  }
-
-  return {
-    templateId,
-    variantId: options.variantId,
-    totalSentences: sentenceCharCounts.length,
-    sentenceCharCounts,
-    totalCharCount: input.replace(/\s+/g, "").length,
-    parsedSentenceCount,
-    segments,
-    sentenceSummaries,
-  };
-}
