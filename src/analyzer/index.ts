@@ -26,7 +26,7 @@ import {
   MeterTemplate,
 } from "../templates/index.js";
 import { buildAstFromAnnotation, buildCouplets, applyMeterTemplateToAst, buildLexResultFromRawLines } from "./ast.js";
-import { validateChars, validateLineAgainstPattern, applyRescueMarks, validateRhyme } from "./validation.js";
+import { validateChars, validateLineAgainstPattern, applyRescueMarks, validateRhyme, LineValidationSummary } from "./validation.js";
 import { chooseCiVariant, applyCiVariantToAst } from "./ci.js";
 import { resolveLineTemplate, getTemplateType } from "./templates.js";
 import { analyzeStream } from "./stream.js";
@@ -50,22 +50,9 @@ export interface AnalyzeOptions {
   strictMode?: boolean;
 }
 
-export interface LineValidationSummary {
-  lineIndex: number;
-  checkableCount: number;
-  matchedCount: number;
-  mismatchCount: number;
-  isCompliant: boolean;
-  charChecks: Array<{
-    col: number;
-    char: string;
-    expected: string;
-    actual: string;
-    matched: boolean;
-    reason?: string;
-  }>;
-}
-
+/**
+ * 分析结果接口
+ */
 export interface AnalysisResult {
   ast: PoemAST;
   matchResults: MatchResult[];
@@ -81,95 +68,59 @@ export interface AnalysisResult {
   summary: string;
 }
 
-// ============ 内部工具函数 ============
+// ============ 同步 API（依赖注入） ============
 
-function splitCiLines(input: string): string[] {
-  const normalized = input.replace(/\r\n?/g, "\n").replace(/\s+/g, "");
-  return normalized
-    .split(/[，。！？；、\n]/u)
-    .map((item) => item.trim())
-    .filter(Boolean);
+export interface AnalyzeOptionsInternal {
+  /** 诗歌类型偏好 */
+  preferredType?: "lüshi" | "jueju" | "ci";
+  /** 词牌变体 ID（仅词牌） */
+  variantId?: string;
+  /** 严格模式 */
+  strictMode?: boolean;
 }
 
-function buildAnnotatedLineNode(params: {
-  text: string;
-  globalLineIndex: number;
-  dict: RhymeDict;
-}): LineNode | null {
-  const lexResult = lex(params.text);
-  const lexLine = lexResult.lines[0];
-  if (!lexLine) return null;
-
-  const annotation = annotate(
-    {
-      lines: [lexLine],
-      metadata: { totalLines: 1, charsPerLine: [lexLine.chars.length] },
-    },
-    params.dict,
-  );
-
-  const chars = annotation.chars[0] ?? [];
-  return {
-    raw: lexLine.raw,
-    chars,
-    charCount: chars.length,
-    globalLineIndex: params.globalLineIndex,
-    isRhymeLine: false,
-    diagnostics: [],
-  };
-}
-
-function filterAmbiguitiesByBestTemplate(
-  ambiguities: ToneAmbiguity[],
-  ast: PoemAST,
-  bestTemplate: MeterTemplate | null,
-): ToneAmbiguity[] {
-  if (!bestTemplate) return ambiguities;
-
-  return ambiguities.filter((amb) => {
-    const constraint = bestTemplate.pattern[amb.position.line]?.[amb.position.col];
-    if (!constraint) return true;
-    if (ast.type === "jueju" && constraint.type !== "fixed") {
-      return false;
-    }
-    if (constraint.type !== "fixed") return true;
-    const matchedOptions = amb.options.filter((item) => item.tone === constraint.tone);
-    if (ast.type === "jueju" && matchedOptions.length === 1) {
-      return false;
-    }
-    return true;
-  });
-}
-
-// ============ 公共 API ============
-
-export async function analyze(input: string, options: AnalyzeOptions): Promise<AnalysisResult> {
-  const specifiedTemplate = getTemplateById(options.templateId);
-  if (!specifiedTemplate) {
-    throw new Error(`指定模板不存在: ${options.templateId}`);
-  }
-
+/**
+ * 同步分析函数 - 核心纯函数
+ *
+ * 依赖通过参数注入，便于测试：
+ * - dict: RhymeDict 实例（可使用固定小字典夹具）
+ * - template: AnyTemplate 实例（直接传入，不通过 ID 查找）
+ *
+ * @param input 输入文本
+ * @param template 模板（MeterTemplate | CiTemplate）
+ * @param dict 韵书字典
+ * @param options 选项
+ */
+export function analyzeSync(
+  input: string,
+  template: AnyTemplate,
+  dict: RhymeDict,
+  options: AnalyzeOptionsInternal = {},
+): AnalysisResult {
+  // 分词
   const lexResult =
-    specifiedTemplate && !("pattern" in specifiedTemplate)
+    !("pattern" in template)
       ? buildLexResultFromRawLines(splitCiLines(input))
       : lex(input);
 
-  const dict = await createRhymeDict(options.rhymeDictType);
+  // 音韵标注
   const annotation = annotate(lexResult, dict);
-  const candidates = [specifiedTemplate];
 
+  // 构建 AST
   const ast = buildAstFromAnnotation(
-    options.preferredType ?? (specifiedTemplate && !("pattern" in specifiedTemplate) ? "ci" : "jueju"),
+    options.preferredType ?? (!("pattern" in template) ? "ci" : "jueju"),
     annotation,
     lexResult.lines.map((line) => line.raw),
-    options.rhymeDictType,
+    dict.type,
   );
 
   let matchResults: MatchResult[] = [];
   let bestMatch: MatchResult | null = null;
 
-  if (specifiedTemplate && !("pattern" in specifiedTemplate)) {
-    const ciTemplate = specifiedTemplate as CiTemplate;
+  // 模板匹配
+  if (!("pattern" in template)) {
+    // 词牌
+    const ciTemplate = template as CiTemplate;
     const variantScore = chooseCiVariant(ciTemplate, ast.lines, options.variantId);
     if (variantScore) {
       applyCiVariantToAst(ast, ciTemplate, variantScore);
@@ -181,33 +132,31 @@ export async function analyze(input: string, options: AnalyzeOptions): Promise<A
       matchResults = [bestMatch];
     }
   } else {
-    const meterCandidates = candidates.filter((candidate): candidate is MeterTemplate => "pattern" in candidate);
-    matchResults = matchTemplate(ast, meterCandidates, dict);
+    // 格律诗
+    const meterTemplate = template as MeterTemplate;
+    matchResults = matchTemplate(ast, [meterTemplate], dict);
     bestMatch = matchResults[0] ?? null;
   }
 
-  ast.templateId = bestMatch?.templateId ?? options.templateId;
-  if (ast.templateId) {
-    ast.type = getTemplateType(ast.templateId);
+  // 设置 AST 元数据
+  ast.templateId = bestMatch?.templateId ?? template.id;
+  ast.type = getTemplateType(ast.templateId);
+
+  // 应用模板到行
+  if ("pattern" in template) {
+    applyMeterTemplateToAst(ast, template as MeterTemplate);
   }
 
-  const bestTemplateCandidate = ast.templateId ? getTemplateById(ast.templateId) : undefined;
+  // 过滤多音字
   const bestMeterTemplate =
-    bestTemplateCandidate && "pattern" in bestTemplateCandidate
-      ? (bestTemplateCandidate as MeterTemplate)
-      : null;
-
-  if (bestMeterTemplate) {
-    applyMeterTemplateToAst(ast, bestMeterTemplate);
-  }
-
+    bestMatch && "pattern" in template ? (template as MeterTemplate) : null;
   const filteredAmbiguities = filterAmbiguitiesByBestTemplate(
     annotation.ambiguities,
     ast,
     bestMeterTemplate,
   );
 
-  // 按字符去重（同一字多次出现只保留一个）
+  // 按字符去重
   const seenChars = new Set<string>();
   const uniqueAmbiguities = filteredAmbiguities.filter((amb) => {
     if (seenChars.has(amb.char)) return false;
@@ -215,6 +164,7 @@ export async function analyze(input: string, options: AnalyzeOptions): Promise<A
     return true;
   });
 
+  // 行校验
   const lineValidations = ast.lines.map((line) =>
     validateLineAgainstPattern(line, line.expectedPattern, uniqueAmbiguities),
   );
@@ -236,11 +186,38 @@ export async function analyze(input: string, options: AnalyzeOptions): Promise<A
     complianceRate,
     lineValidations,
     summary: bestMatch
-      ? `指定模板：${options.templateId}，匹配度 ${(bestMatch.confidence * 100).toFixed(1)}%，合律率 ${(complianceRate * 100).toFixed(1)}%`
-      : `指定模板：${options.templateId}（未命中可用变体）`,
+      ? `模板：${template.id}，匹配度 ${(bestMatch.confidence * 100).toFixed(1)}%，合律率 ${(complianceRate * 100).toFixed(1)}%`
+      : `模板：${template.id}（未命中可用变体）`,
   };
 }
 
+// ============ 异步便捷 API ============
+
+/**
+ * 异步便捷分析函数
+ *
+ * 内部调用 createRhymeDict 加载韵书，通过 getTemplateById 查找模板。
+ * 适合快速上手，测试或正式使用时建议用 analyzeSync 配合固定字典。
+ */
+export async function analyze(
+  input: string,
+  options: AnalyzeOptions,
+): Promise<AnalysisResult> {
+  const dict = await createRhymeDict(options.rhymeDictType);
+  const template = getTemplateById(options.templateId);
+  if (!template) {
+    throw new Error(`指定模板不存在: ${options.templateId}`);
+  }
+  return analyzeSync(input, template, dict, {
+    preferredType: options.preferredType,
+    variantId: options.variantId,
+    strictMode: options.strictMode,
+  });
+}
+
+/**
+ * 单行分析（异步便捷版）
+ */
 export async function analyzeLine(
   input: string,
   context: {
@@ -369,3 +346,65 @@ export async function analyzeLine(
 }
 
 export type { MatchResult, AnyTemplate };
+
+// ============ 内部工具函数 ============
+
+function splitCiLines(input: string): string[] {
+  const normalized = input.replace(/\r\n?/g, "\n").replace(/\s+/g, "");
+  return normalized
+    .split(/[，。！？；、\n]/u)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function buildAnnotatedLineNode(params: {
+  text: string;
+  globalLineIndex: number;
+  dict: RhymeDict;
+}): LineNode | null {
+  const lexResult = lex(params.text);
+  const lexLine = lexResult.lines[0];
+  if (!lexLine) return null;
+
+  const annotation = annotate(
+    {
+      lines: [lexLine],
+      metadata: { totalLines: 1, charsPerLine: [lexLine.chars.length] },
+    },
+    params.dict,
+  );
+
+  const chars = annotation.chars[0] ?? [];
+  return {
+    raw: lexLine.raw,
+    chars,
+    charCount: chars.length,
+    globalLineIndex: params.globalLineIndex,
+    isRhymeLine: false,
+    diagnostics: [],
+  };
+}
+
+function filterAmbiguitiesByBestTemplate(
+  ambiguities: ToneAmbiguity[],
+  ast: PoemAST,
+  bestTemplate: MeterTemplate | null,
+): ToneAmbiguity[] {
+  if (!bestTemplate) return ambiguities;
+
+  return ambiguities.filter((amb) => {
+    const constraint = bestTemplate.pattern[amb.position.line]?.[amb.position.col];
+    if (!constraint) return true;
+    if (ast.type === "jueju" && constraint.type !== "fixed") {
+      return false;
+    }
+    if (constraint.type !== "fixed") return true;
+    const matchedOptions = amb.options.filter((item) => item.tone === constraint.tone);
+    if (ast.type === "jueju" && matchedOptions.length === 1) {
+      return false;
+    }
+    return true;
+  });
+}
+
+// ============ 公共 API ============
