@@ -11,9 +11,31 @@ import type {
   LineNode,
   PoemAST,
   RhymeDictType,
+  ToneAmbiguity,
 } from "../core/types.js";
-import type { AnnotationResult } from "../phonology/index.js";
+import { lex } from "../lexer/index.js";
+import { annotate, AnnotationResult } from "../phonology/index.js";
+import type { RhymeDict } from "../rhyme-dict/index.js";
 import type { MeterTemplate } from "../templates/index.js";
+
+/**
+ * 对单行文本做词法分析+音韵标注，返回标注后的字符数组和歧义信息。
+ * 供 analyzeLine 和 buildAnnotatedLineNode 等场景复用。
+ */
+export function annotateLineText(
+  text: string,
+  dict: RhymeDict,
+): { chars: CharNode[]; ambiguities: ToneAmbiguity[] } {
+  const lexResult = lex(text);
+  const lexLine = lexResult.lines[0];
+  if (!lexLine) return { chars: [], ambiguities: [] };
+
+  const annotation = annotate(
+    { lines: [lexLine], metadata: { totalLines: 1, charsPerLine: [lexLine.chars.length] } },
+    dict,
+  );
+  return { chars: annotation.chars[0] ?? [], ambiguities: annotation.ambiguities };
+}
 
 /**
  * 从标注结果构建 PoemAST

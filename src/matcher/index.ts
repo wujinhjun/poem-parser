@@ -1,5 +1,4 @@
 import { PoemAST, ToneConstraint } from "../core/types.js";
-import { RhymeDict } from "../rhyme-dict/index.js";
 import { AnyTemplate, MeterTemplate } from "../templates/index.js";
 
 export interface MatchResult {
@@ -20,7 +19,6 @@ function isMeterTemplate(template: AnyTemplate): template is MeterTemplate {
 export function matchTemplate(
   ast: PoemAST,
   templates: AnyTemplate[],
-  _dict: RhymeDict,
 ): MatchResult[] {
   const results: MatchResult[] = [];
 

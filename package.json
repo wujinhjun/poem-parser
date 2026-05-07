@@ -9,7 +9,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "example:denggao": "pnpm build && node scripts/example-denggao.mjs",
-    "example:shuidiao": "pnpm build && node scripts/example-shuidiaogetou.mjs"
+    "example:shuidiao": "pnpm build && node scripts/example-shuidiaogetou.mjs",
+    "examples": "pnpm build && node examples/run.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

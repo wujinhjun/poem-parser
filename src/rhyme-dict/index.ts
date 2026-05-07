@@ -29,10 +29,9 @@ type ToneLookup = Record<string, "平" | "仄" | "多" | "未知">;
 let rhymeIndexCache: RhymeIndex | null = null;
 let toneLookupCache: ToneLookup | null = null;
 
+const TONE_MAP: Record<string, Tone> = { 平: Tone.Ping, 仄: Tone.Ze };
 function toTone(raw: RawRhymeItem["tone"]): Tone {
-  if (raw === Tone.Ping) return Tone.Ping;
-  if (raw === Tone.Ze) return Tone.Ze;
-  return Tone.Unknown;
+  return TONE_MAP[raw] ?? Tone.Unknown;
 }
 
 async function loadRhymeIndex(): Promise<RhymeIndex> {
@@ -49,24 +48,6 @@ async function loadToneLookup(): Promise<ToneLookup> {
   const content = await readFile(file, "utf8");
   toneLookupCache = JSON.parse(content) as ToneLookup;
   return toneLookupCache;
-}
-
-function buildFallbackEntries(char: string, toneLookup: ToneLookup): RhymeEntry[] {
-  const tone = toneLookup[char];
-  if (!tone || tone === "未知") return [];
-  if (tone === "平") {
-    return [{ char, tone: Tone.Ping, rhymeGroup: "" }];
-  }
-  if (tone === "仄") {
-    return [{ char, tone: Tone.Ze, rhymeGroup: "" }];
-  }
-  if (tone === "多") {
-    return [
-      { char, tone: Tone.Ping, rhymeGroup: "" },
-      { char, tone: Tone.Ze, rhymeGroup: "" },
-    ];
-  }
-  return [];
 }
 
 class JsonRhymeDict implements RhymeDict {

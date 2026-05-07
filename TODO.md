@@ -1,30 +1,41 @@
-# TODO（词牌暴露问题与指定模板校验）
+# 架构与解耦 TODO
 
-## 1. 词牌链路当前问题
+## 目标原则
 
-- [ ] `matcher` 目前只对 `MeterTemplate` 生效，`CiTemplate` 尚未进入完整评分流程
-- [ ] 词牌全量模式依赖用户输入分句；当前 `lexer` 对词的长段文本切分不够（常被当成 1-2 行）
-- [ ] `analyze` 尚未使用 `variantId` 对词牌全量分析做变体级匹配
-- [ ] 词牌韵脚转韵（`rhymeSwitch`）未纳入全量评分与诊断
-- [ ] 词牌多阕（上阕/下阕）在全量模式中的结构化输出（`sections`）未完成
+- **Parser / 分析核心无状态**：不内部 `await` 加载韵书、不隐式读全局模板；调用方注入依赖。
+- **外部传入**：词牌/格律模板（`MeterTemplate` / `CiTemplate` 或解析后的结构）、韵表（`RhymeDict` 或等价只读快照）。
+- **入口职责**：仅负责 I/O（读文件、选 `rhymeDictType`）与组装；核心管线为 **同步纯函数 + 注入的只读数据**。
 
-## 2. 分析入口策略调整（按真实使用场景）
+---
 
-> 不应只依赖自动推断。很多场景下用户本来就知道词牌/格律。
+## 当前问题（待解决）
 
-- [x] `analyze(input, options)` 支持 `options.templateId`
-- [ ] `analyze(input, options)` 完整支持 `options.variantId`（词牌变体）
-- [ ] 当显式传入模板时，进入“指定模板校验模式”，输出应明确区分“模板匹配”与“模板校验”
-- [ ] 对诗体（律/绝）：指定模板后默认校验，不再参与同类模板自动排序
-- [ ] 对词体：指定词牌后只在其变体内匹配（变体可自动推断，或由 `variantId` 强制）
+### 1. 依赖注入与副作用
 
-## 3. 你给出的两个典型场景
+- [x] `analyze` / `analyzeLine` / `analyzeStream` 内部 `await createRhymeDict(...)`，核心逻辑与异步资源加载耦合。
+- [x] 改为：对外保留便捷异步 API 亦可，但需提供 **同步版本**：`(input, options & { dict: RhymeDict; template: ... }) => AnalysisResult`，由上层 `createRhymeDict` 一次后传入。
 
-- [ ] 《水调歌头》：用户已知词牌 `水调歌头`，只需要判定“是否合该词牌 + 变体归属”
-- [ ] 《登高》：用户已知“七律、仄起、首句押韵”，应直接按该格律模板校验
+### 2. 模板来源
 
-## 4. 下一步实现顺序
+- [ ] `getTemplateById(options.templateId)` 等从内部注册表取模板；与「模板外部传入」目标不一致。
+- [ ] 明确 API：`template` 作为参数传入；若保留 `templateId`，仅作为元数据/日志，不强制内部解析。
 
-1. 完成 `CiTemplate` 匹配器（支持变长行、多阕、转韵）
-2. 接入 `templateId + variantId` 的全量校验分支
-3. 为《水调歌头》《登高》补专用 fixture，驱动规则收敛
+### 3. 编排层过重（「上帝函数」）
+
+- [x] `src/analyzer/index.ts` 中单次分析串联：分词分支、建 AST、匹配/变体、写回 AST、过滤多音字、校验、拼文案——职责过多。
+- [x] 拆成可单测步骤：每步输入输出类型清晰，`runPipeline` 真正串联各步骤。
+
+### 4. 诗体 / 词牌分支分散
+
+- [x] 词牌 `splitCiLines` + `buildLexResultFromRawLines` vs 诗体 `lex`；流式再一套分句。易不一致。
+- [x] 收敛为统一中间表示：`splitSentences()` 统一分句，`lexStep()` 统一产出 `LexResult`。
+- [x] `analyzeStream` 改用 `splitSentences()` + DI（`analyzeStreamSync`）。
+
+### 5. API 卫生
+
+- [x] `matchTemplate(ast, templates, dict)` 中 `dict` 未使用（`_dict`）—— 已移除参数。
+- [x] `analyzeLine` 中 lex+annotate 重复逻辑已提取为 `annotateLineText()`。
+
+### 6. 测试与可替换性
+
+- [ ] 注入 `RhymeDict` 后，校验 / 匹配类测试可使用 **固定小字典夹具**，无需每次异步加载大表。

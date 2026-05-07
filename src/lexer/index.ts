@@ -16,6 +16,9 @@ export interface LexResult {
 const HANZI_RE = /[\u4e00-\u9fff]/u;
 const LINE_END_PUNC_RE = /[，。！？；：,.!?;:]$/u;
 
+/** 中文标点分隔符 —— 诗词和词牌的通用分句模式 */
+const SENTENCE_SEP_RE = /[，。！？；、\n]/u;
+
 function normalizePunctuation(input: string): string {
   return input
     .replace(/\r\n?/g, "\n")
@@ -31,6 +34,19 @@ function shouldTreatAsTitle(line: string): boolean {
   const hasHanzi = HANZI_RE.test(line);
   const hasEndPunc = LINE_END_PUNC_RE.test(line);
   return hasHanzi && !hasEndPunc;
+}
+
+/**
+ * 按中文标点分句 —— 不区分诗体/词牌，统一按标点拆分为句子数组。
+ * 用于词牌分析、流式解析等场景。
+ */
+export function splitSentences(input: string): string[] {
+  return input
+    .replace(/\r\n?/g, "\n")
+    .replace(/\s+/g, "")
+    .split(SENTENCE_SEP_RE)
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 export function lex(input: string): LexResult {

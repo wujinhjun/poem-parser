@@ -4,10 +4,14 @@
  * 按顺序解析输入文本，逐字校验与模板的匹配情况。
  * 支持输入不完整时只校验已有部分。
  *
+ * analyzeStreamSync —— 纯函数，依赖通过参数注入
+ * analyzeStream     —— 异步便捷封装
+ *
  * @module analyzer/stream
  */
 
 import type { ToneConstraint } from "../core/types.js";
+import { splitSentences } from "../lexer/index.js";
 import { createRhymeDict, RhymeDict } from "../rhyme-dict/index.js";
 import {
   AnyTemplate,
@@ -73,8 +77,43 @@ export interface StreamAnalyzeResult {
   }>;
 }
 
+// ============ 工具函数 ============
+
+/** 从模板中提取每句的期望字数 */
+export function getSentenceCharCounts(template: AnyTemplate, variantId?: string): number[] {
+  if (!("pattern" in template)) {
+    const ciTemplate = template as CiTemplate;
+    const variant = variantId
+      ? ciTemplate.variants.find((v) => v.id === variantId)
+      : ciTemplate.variants[0];
+    if (!variant) throw new Error(`变体不存在: ${variantId}`);
+    return variant.sections.flatMap((s) => s.lines.map((l) => l.charCount));
+  }
+  return (template as MeterTemplate).pattern.map((p) => p.length);
+}
+
+/** 按句子索引和列索引获取模板约束 */
+function getExpectedConstraint(
+  template: AnyTemplate,
+  sentenceIndex: number,
+  col: number,
+  isCi: boolean,
+  variantId?: string,
+): ToneConstraint | undefined {
+  if (isCi) {
+    const ciTemplate = template as CiTemplate;
+    const variant = variantId
+      ? ciTemplate.variants.find((v) => v.id === variantId)
+      : ciTemplate.variants[0];
+    return variant?.sections.flatMap((s) => s.lines)[sentenceIndex]?.pattern[col];
+  }
+  return (template as MeterTemplate).pattern[sentenceIndex]?.[col];
+}
+
+// ============ 同步核心 ============
+
 /**
- * 流式解析 - 按顺序解析输入文本
+ * 流式解析（同步，依赖注入）
  *
  * 特点：
  * - 支持诗词/词牌/律诗/绝句
@@ -82,53 +121,20 @@ export interface StreamAnalyzeResult {
  * - 输入不完整时只校验已有部分
  * - 返回每个位置与模板的匹配情况
  *
- * @param input 输入文本（连续字符串）
- * @param templateId 模板ID
- * @param options 配置选项
+ * @param input    输入文本（连续字符串）
+ * @param template 模板对象（外部注入）
+ * @param dict     韵书实例（外部注入）
+ * @param options  可选配置
  */
-export async function analyzeStream(
+export function analyzeStreamSync(
   input: string,
-  templateId: string,
-  options: {
-    variantId?: string;
-    rhymeDictType: "cilin" | "pingshui" | "zhonghua_new";
-  },
-): Promise<StreamAnalyzeResult> {
-  const template = getTemplateById(templateId);
-  if (!template) {
-    throw new Error(`模板不存在: ${templateId}`);
-  }
-
-  const dict = await createRhymeDict(options.rhymeDictType);
-
-  // 根据模板类型确定解析方式
+  template: AnyTemplate,
+  dict: RhymeDict,
+  options: { variantId?: string } = {},
+): StreamAnalyzeResult {
   const isCi = !("pattern" in template);
-
-  // 流式分句：按句子分隔符号分割
-  const normalized = input.replace(/\r\n?/g, "\n").replace(/\s+/g, "");
-  const sentences = normalized.split(/[，。！？；、\n]/u).map((s) => s.trim()).filter(Boolean);
-
-  // 获取每句的期望字数
-  const sentenceCharCounts: number[] = [];
-
-  if (isCi) {
-    const ciTemplate = template as CiTemplate;
-    const variant = options.variantId
-      ? ciTemplate.variants.find((v) => v.id === options.variantId)
-      : ciTemplate.variants[0];
-    if (!variant) throw new Error(`变体不存在: ${options.variantId}`);
-
-    for (const section of variant.sections) {
-      for (const line of section.lines) {
-        sentenceCharCounts.push(line.charCount);
-      }
-    }
-  } else {
-    const meter = template as MeterTemplate;
-    for (const pattern of meter.pattern) {
-      sentenceCharCounts.push(pattern.length);
-    }
-  }
+  const sentences = splitSentences(input);
+  const sentenceCharCounts = getSentenceCharCounts(template, options.variantId);
 
   const segments: StreamSegment[] = [];
   const sentenceSummaries: StreamAnalyzeResult["sentenceSummaries"] = [];
@@ -139,30 +145,17 @@ export async function analyzeStream(
   for (let si = 0; si < sentences.length; si++) {
     const sentence = sentences[si];
     const expectedCount = sentenceCharCounts[si] ?? 0;
-    const sentenceChars = [...sentence]; // 拆成单字
+    const sentenceChars = [...sentence];
 
     let sentenceMatched = 0;
     let sentenceCheckable = 0;
-    let sentenceMismatches: StreamSegment["validation"]["mismatches"] = [];
+    const sentenceMismatches: StreamSegment["validation"]["mismatches"] = [];
 
     for (let ci = 0; ci < sentenceChars.length; ci++) {
       const char = sentenceChars[ci];
-      const col = ci;
+      const expected = getExpectedConstraint(template, si, ci, isCi, options.variantId);
 
-      // 获取该位置的模板约束
-      let expected: ToneConstraint | undefined;
-      if (isCi) {
-        const ciTemplate = template as CiTemplate;
-        const variant = options.variantId
-          ? ciTemplate.variants.find((v) => v.id === options.variantId)
-          : ciTemplate.variants[0];
-        const allLines = variant!.sections.flatMap((s) => s.lines);
-        expected = allLines[si]?.pattern[col];
-      } else {
-        expected = (template as MeterTemplate).pattern[si]?.[col];
-      }
-
-      // 直接查字典获取音韵信息
+      // 查韵书获取音韵
       const entries = dict.lookup(char);
       const uniqueTones = [...new Set(entries.map((e) => e.tone))];
       const primaryTone = uniqueTones.length === 1 ? uniqueTones[0] : entries[0]?.tone ?? null;
@@ -170,7 +163,7 @@ export async function analyzeStream(
       // 校验
       let matched = false;
       let expectedStr = "unknown";
-      let actualStr = primaryTone ?? "未知";
+      const actualStr = primaryTone ?? "未知";
       let reason: string | undefined;
 
       if (expected) {
@@ -192,13 +185,11 @@ export async function analyzeStream(
             reason = "rhyme_unresolved";
           }
         } else {
-          // flexible
           matched = true;
           sentenceMatched++;
         }
       } else {
-        expectedStr = "unknown";
-        matched = true; // 超长部分不校验
+        matched = true;
       }
 
       segments.push({
@@ -208,20 +199,18 @@ export async function analyzeStream(
         sentenceIndex: si,
         sentenceCharCount: expectedCount,
         sentenceRemaining: expectedCount - ci - 1,
-        startCol: col,
+        startCol: ci,
         validation: {
           matchedCount: matched ? 1 : 0,
           checkableCount: expected ? 1 : 0,
-          mismatches: matched ? [] : [{ col, char, expected: expectedStr, actual: actualStr, reason }],
+          mismatches: matched ? [] : [{ col: ci, char, expected: expectedStr, actual: actualStr, reason }],
         },
       });
 
       charIndex++;
     }
 
-    // 该句结束时检查是否完整
     const isComplete = sentenceChars.length >= expectedCount;
-    const isValid = sentenceMismatches.length === 0;
 
     sentenceSummaries.push({
       sentenceIndex: si,
@@ -229,18 +218,16 @@ export async function analyzeStream(
       charCount: sentenceChars.length,
       remaining: expectedCount - sentenceChars.length,
       isComplete,
-      isValid,
+      isValid: sentenceMismatches.length === 0,
       matchedCount: sentenceMatched,
       checkableCount: sentenceCheckable,
     });
 
-    if (isComplete) {
-      parsedSentenceCount++;
-    }
+    if (isComplete) parsedSentenceCount++;
   }
 
   return {
-    templateId,
+    templateId: template.id,
     variantId: options.variantId,
     totalSentences: sentenceCharCounts.length,
     sentenceCharCounts,
@@ -249,4 +236,26 @@ export async function analyzeStream(
     segments,
     sentenceSummaries,
   };
+}
+
+// ============ 异步便捷 API ============
+
+/**
+ * 流式解析（异步便捷封装）
+ *
+ * 内部加载韵书和模板，适合快速调用。
+ * 对性能和可测试性有要求时，请使用 analyzeStreamSync 注入依赖。
+ */
+export async function analyzeStream(
+  input: string,
+  templateId: string,
+  options: {
+    variantId?: string;
+    rhymeDictType: "cilin" | "pingshui" | "zhonghua_new";
+  },
+): Promise<StreamAnalyzeResult> {
+  const template = getTemplateById(templateId);
+  if (!template) throw new Error(`模板不存在: ${templateId}`);
+  const dict = await createRhymeDict(options.rhymeDictType);
+  return analyzeStreamSync(input, template, dict, { variantId: options.variantId });
 }
