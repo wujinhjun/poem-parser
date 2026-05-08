@@ -9,7 +9,6 @@ export interface LexResult {
   metadata: {
     totalLines: number;
     charsPerLine: number[];
-    title?: string;
   };
 }
 
@@ -28,12 +27,6 @@ function normalizePunctuation(input: string): string {
     .replace(/\?/g, "？")
     .replace(/;/g, "；")
     .replace(/:/g, "：");
-}
-
-function shouldTreatAsTitle(line: string): boolean {
-  const hasHanzi = HANZI_RE.test(line);
-  const hasEndPunc = LINE_END_PUNC_RE.test(line);
-  return hasHanzi && !hasEndPunc;
 }
 
 /**
@@ -63,14 +56,7 @@ export function lex(input: string): LexResult {
     .map((line) => line.trim())
     .filter(Boolean);
 
-  let title: string | undefined;
-  let contentLines = rawLines;
-  if (rawLines.length > 1 && shouldTreatAsTitle(rawLines[0])) {
-    title = rawLines[0];
-    contentLines = rawLines.slice(1);
-  }
-
-  const lines: LexLine[] = contentLines.map((raw) => {
+  const lines: LexLine[] = rawLines.map((raw) => {
     const punctuation = LINE_END_PUNC_RE.test(raw) ? raw.at(-1) ?? "" : "";
     const chars = [...raw].filter((ch) => HANZI_RE.test(ch));
     return { raw, chars, punctuation };
@@ -81,7 +67,6 @@ export function lex(input: string): LexResult {
     metadata: {
       totalLines: lines.length,
       charsPerLine: lines.map((line) => line.chars.length),
-      title,
     },
   };
 }

@@ -41,12 +41,12 @@ describe("lexer - lex 边角情况", () => {
     expect(result.metadata.totalLines).toBe(0);
   });
 
-  it("含标题的输入应检测标题", () => {
-    // lex 会将无标点的首行识别为标题
+  it("lex 不再检测标题，所有行均为内容", () => {
+    // lex 不再吃标题 —— 调用方应自行过滤
     const result = lex("登鹳雀楼\n白日依山尽，黄河入海流。");
-    expect(result.metadata.title).toBe("登鹳雀楼");
-    expect(result.lines.length).toBe(1); // 第二行含对标点，标题被分离，内容剩1行
-    expect(result.lines[0].raw).toContain("白日");
+    expect(result.lines.length).toBe(2);
+    expect(result.lines[0].raw).toBe("登鹳雀楼");
+    expect(result.lines[1].raw).toContain("白日");
   });
 });
 

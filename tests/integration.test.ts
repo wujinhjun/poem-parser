@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { analyze, analyzeSync, analyzeLine } from "../src/analyzer/index.js";
+import { runPipeline } from "../src/analyzer/pipeline.js";
 import { loadMeterTemplates, loadCiTemplates, getCandidates, getTemplateById } from "../src/templates/index.js";
 import { createRhymeDict } from "../src/rhyme-dict/index.js";
 import { analyzeStreamSync, getSentenceCharCounts } from "../src/analyzer/stream.js";
@@ -165,5 +166,34 @@ describe("rhyme-dict - 边角字符", () => {
     const dict = await createRhymeDict("cilin");
     const result = dict.isSameRhyme("𠀀", "xyz");
     expect(typeof result).toBe("boolean");
+  });
+});
+
+// ============ pipeline 字数校验 ============
+
+describe("pipeline - 字数预检", () => {
+  it("诗体字数不匹配应抛出错误", async () => {
+    const dict = await createRhymeDict("cilin");
+    const tpl = loadMeterTemplates().find((m) => m.id === "wujue-pingqi")!;
+    // wujue-pingqi = 5字×4行=20字，传入19字
+    expect(() =>
+      runPipeline({
+        input: "白日依山尽\n黄河入海流\n欲穷千里目\n更上一层",  // 19字
+        template: tpl,
+        dict,
+      }),
+    ).toThrow("字数不匹配");
+  });
+
+  it("诗体字数匹配应正常通过", async () => {
+    const dict = await createRhymeDict("cilin");
+    const tpl = loadMeterTemplates().find((m) => m.id === "wujue-pingqi")!;
+    // wujue-pingqi = 5字×4行=20字，传入正好20字
+    const result = runPipeline({
+      input: "白日依山尽，\n黄河入海流。\n欲穷千里目，\n更上一层楼。",
+      template: tpl,
+      dict,
+    });
+    expect(result.ast.lines.length).toBe(4);
   });
 });

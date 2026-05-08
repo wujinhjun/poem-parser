@@ -190,6 +190,18 @@ export function validate(
   return { lineValidations, complianceRate, isCompliant, fullyCompliant };
 }
 
+// ============ 字数预检 ============
+
+/** 计算输入中的汉字总数 */
+function countHanzi(input: string): number {
+  const HANZI_RE = /[\u4e00-\u9fff]/u;
+  let count = 0;
+  for (const ch of input) {
+    if (HANZI_RE.test(ch)) count += 1;
+  }
+  return count;
+}
+
 // ============ 完整管线 ============
 
 export function runPipeline(input: PipelineInput): PipelineOutput {
@@ -198,6 +210,17 @@ export function runPipeline(input: PipelineInput): PipelineOutput {
   // 1. 分词
   const { lexResult, isCi } = lexStep(text, template);
   const rawLines = lexResult.lines.map((l) => l.raw);
+
+  // 1.5 字数预检（诗体）
+  if ("pattern" in template) {
+    const expected = template.charPerLine * template.lineCount;
+    const actual = countHanzi(text);
+    if (actual !== expected) {
+      throw new Error(
+        `字数不匹配：期望 ${expected} 字（${template.charPerLine}字×${template.lineCount}行），实际 ${actual} 字`,
+      );
+    }
+  }
 
   // 2. 标注
   const annotation = annotateStep(lexResult, dict);
