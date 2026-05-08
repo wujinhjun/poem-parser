@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { analyze, analyzeLine, Tone, ToneConstraint } from "../src/index.js";
+import { analyze, analyzeLine, Tone, ToneConstraint } from "./_helpers.js";
 import { QIANTANGHU_CHUNXING } from "./fixtures/qiantanghu-chunxing.js";
 
 function formatConstraint(constraint: ToneConstraint): string {

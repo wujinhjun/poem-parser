@@ -2,10 +2,12 @@ import { describe, expect, it } from "vitest";
 import { Tone } from "../src/core/types.js";
 import type { ToneConstraint, ToneAmbiguity, LineNode, PoemAST } from "../src/core/types.js";
 import { createCharNode } from "../src/core/factories.js";
-import { createRhymeDict } from "../src/rhyme-dict/index.js";
+import { createRhymeDict } from "../src/rhyme-dict/loader.js";
 import { matchTemplate } from "../src/matcher/index.js";
 import { analyzeRescue } from "../src/rescue/index.js";
-import { analyzeSync, analyzeLine, analyzeStreamSync } from "../src/analyzer/index.js";
+import { analyzeSync } from "../src/analyzer/kernel.js";
+import { analyzeLine } from "./_helpers.js";
+import { analyzeStreamSync } from "../src/analyzer/stream.js";
 import { matchStep, resolveAmbiguities, runPipeline } from "../src/analyzer/pipeline.js";
 import { lex } from "../src/lexer/index.js";
 import { buildAstFromAnnotation, annotateLineText, applyMeterTemplateToAst } from "../src/analyzer/ast.js";
@@ -60,7 +62,7 @@ describe("matcher - toneOptions 匹配", () => {
 
 describe("stream - 输入句数超过模板", () => {
   it("超出的句子的 expectedCount 应为 0", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const meter = loadMeterTemplates().find((m) => m.id === "wujue-pingqi")!;
     // wujue-pingqi 只有4句，输入5句
     const result = analyzeStreamSync("白日依山尽，黄河入海流。欲穷千里目，更上一层楼。多余一句。", meter, dict);
@@ -74,7 +76,7 @@ describe("stream - 输入句数超过模板", () => {
 
 describe("stream - tone_mismatch 分支", () => {
   it("已知音调但不匹配模板应返回 tone_mismatch", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // 用七绝模板，第一句 pattern 前几个是固定仄声
     const meter = loadMeterTemplates().find((m) => m.id === "qijue-zeqi")!;
     // "白日依山尽" — 白=仄，日=仄，依=平... 需要找一个确定触发 mismatch 的输入
@@ -91,7 +93,7 @@ describe("stream - tone_mismatch 分支", () => {
 
 describe("rescue - benju-zijiou 无补偿位", () => {
   it("单处失粘但无合律位补偿时应返回空", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const pattern: ToneConstraint[][] = [
       [
         { type: "fixed", tone: Tone.Ze },
@@ -167,7 +169,7 @@ describe("rescue - benju-zijiou 无补偿位", () => {
 
 describe("rescue - guping 失粘位置不包含孤立平声", () => {
   it("孤立平声不在失粘列表中时应返回空", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // 需要: 除韵脚外仅1处平声 + 该平声处不mismatch → guping-jiou 不触发
     // 构造: 韵脚位置期望平(合) + 其余全部期望仄且全部实际仄 → 没有平声
     // Wait 如果全部仄就没有孤立平声
@@ -216,7 +218,7 @@ describe("rescue - guping 失粘位置不包含孤立平声", () => {
 
 describe("ast - annotateLineText 空结果", () => {
   it("空输入应走 ?? [] 分支", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // 纯空格输入 → lex 返回空 → annotateLineText 返回空
     const result = annotateLineText("   ", dict);
     expect(result.chars).toEqual([]);
@@ -227,7 +229,7 @@ describe("ast - annotateLineText 空结果", () => {
 
 describe("ast - buildAstFromAnnotation rawLines 短于 chars", () => {
   it("rawLines 不够时用 chars.join 拼接", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const annotation = { chars: [[createCharNode({ char: "白", line: 0, col: 0, global: 0, tone: Tone.Ze })]], ambiguities: [] };
     // rawLines 为空数组 → L56 走 ?? 分支
     const ast = buildAstFromAnnotation("jueju", annotation, [], "cilin");
@@ -329,7 +331,7 @@ describe("pipeline - resolveAmbiguities 绝句1选项", () => {
 
 describe("pipeline - runPipeline 显式 preferredType", () => {
   it("传入 preferredType 应走 ?? 左侧分支", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const tpl = loadMeterTemplates().find((m) => m.id === "wujue-pingqi")!;
     const result = runPipeline({
       input: "白日依山尽，\n黄河入海流。\n欲穷千里目，\n更上一层楼。",
@@ -428,7 +430,7 @@ describe("ci - applyCiVariantToAst 内部遍历", () => {
 
 describe("rhyme-dict - lookup 多音字分支", () => {
   it("多音字应返回平仄两种音调", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // "不" 可能是多音字
     const entries = dict.lookup("不");
     expect(Array.isArray(entries)).toBe(true);
@@ -436,8 +438,8 @@ describe("rhyme-dict - lookup 多音字分支", () => {
   });
 
   it("不同韵书类型的同一字符结果可能不同", async () => {
-    const dictCilin = await createRhymeDict("cilin");
-    const dictPingshui = await createRhymeDict("pingshui");
+    const dictCilin = await createRhymeDict("cilin", "./data");
+    const dictPingshui = await createRhymeDict("pingshui", "./data");
     const cilinEntries = dictCilin.lookup("天");
     const pingshuiEntries = dictPingshui.lookup("天");
     // 至少一个韵书有结果
@@ -449,7 +451,7 @@ describe("rhyme-dict - lookup 多音字分支", () => {
 
 describe("rhyme-dict - tone-lookup 无记录的字符走 fallback", () => {
   it("tone-lookup 中不存在但 rhyme-char-index 中存在的字符", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // 几乎所有常见汉字都在两个索引中，但一些生僻字可能不同
     const entries = dict.lookup("龘"); // 生僻字
     expect(Array.isArray(entries)).toBe(true);

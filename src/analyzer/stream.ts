@@ -5,20 +5,14 @@
  * 支持输入不完整时只校验已有部分。
  *
  * analyzeStreamSync —— 纯函数，依赖通过参数注入
- * analyzeStream     —— 异步便捷封装
  *
  * @module analyzer/stream
  */
 
 import type { ToneConstraint } from "../core/types.js";
 import { splitSentences } from "../lexer/index.js";
-import { createRhymeDict, RhymeDict } from "../rhyme-dict/index.js";
-import {
-  AnyTemplate,
-  CiTemplate,
-  getTemplateById,
-  MeterTemplate,
-} from "../templates/index.js";
+import type { RhymeDict } from "../rhyme-dict/index.js";
+import type { AnyTemplate, CiTemplate, MeterTemplate } from "../templates/index.js";
 
 export interface StreamSegment {
   /** 片段序号（从0开始） */
@@ -238,24 +232,3 @@ export function analyzeStreamSync(
   };
 }
 
-// ============ 异步便捷 API ============
-
-/**
- * 流式解析（异步便捷封装）
- *
- * 内部加载韵书和模板，适合快速调用。
- * 对性能和可测试性有要求时，请使用 analyzeStreamSync 注入依赖。
- */
-export async function analyzeStream(
-  input: string,
-  templateId: string,
-  options: {
-    variantId?: string;
-    rhymeDictType: "cilin" | "pingshui" | "zhonghua_new";
-  },
-): Promise<StreamAnalyzeResult> {
-  const template = getTemplateById(templateId);
-  if (!template) throw new Error(`模板不存在: ${templateId}`);
-  const dict = await createRhymeDict(options.rhymeDictType);
-  return analyzeStreamSync(input, template, dict, { variantId: options.variantId });
-}

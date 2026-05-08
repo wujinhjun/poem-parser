@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { analyzeLine } from "../src/analyzer/index.js";
+import { analyzeLine } from "./_helpers.js";
 import { validateLineAgainstPattern, validateChars } from "../src/analyzer/validation.js";
 import type { LineNode, ToneConstraint } from "../src/core/types.js";
 import { Tone } from "../src/core/types.js";

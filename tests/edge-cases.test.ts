@@ -11,7 +11,7 @@ import { Tone } from "../src/core/types.js";
 import type { LineNode, ToneConstraint, ToneAmbiguity } from "../src/core/types.js";
 import type { CiTemplate, CiTemplateVariant, MeterTemplate } from "../src/templates/index.js";
 import { loadMeterTemplates } from "../src/templates/index.js";
-import { createRhymeDict } from "../src/rhyme-dict/index.js";
+import { createRhymeDict } from "../src/rhyme-dict/loader.js";
 
 // ============ lexer 模块 ============
 
@@ -67,40 +67,22 @@ describe("templates - getTemplateType", () => {
 });
 
 describe("templates - resolveLineTemplate 错误情况", () => {
-  it("不存在的模板 ID 应抛出错误", () => {
-    expect(() =>
-      resolveLineTemplate({ templateId: "不存在的模板", globalLineIndex: 0 }),
-    ).toThrow("Template not found");
-  });
-
   it("律诗行索引超出范围应抛出错误", () => {
-    expect(() =>
-      resolveLineTemplate({
-        templateId: "wujue-pingqi",
-        globalLineIndex: 99,
-      }),
-    ).toThrow("out of range");
+    const tpl = loadMeterTemplates().find((m) => m.id === "wujue-pingqi")!;
+    expect(() => resolveLineTemplate(tpl, 99)).toThrow("out of range");
   });
 
   it("词牌无变体时应抛出错误", () => {
-    // 使用空变体的模板名称不存在的场景
-    expect(() =>
-      resolveLineTemplate({
-        templateId: "水调歌头",
-        variantId: "不存在的变体",
-        globalLineIndex: 0,
-      }),
-    ).toThrow();
+    const tpl: CiTemplate = { id: "空词牌", name: "空", variants: [] };
+    expect(() => resolveLineTemplate(tpl, 0, "不存在的变体")).toThrow();
   });
 
   it("词牌行索引超出范围应抛出错误", () => {
-    expect(() =>
-      resolveLineTemplate({
-        templateId: "水调歌头",
-        variantId: "水调歌头-v3",
-        globalLineIndex: 999,
-      }),
-    ).toThrow("out of range");
+    const tpl: CiTemplate = {
+      id: "测试", name: "测试",
+      variants: [{ id: "v1", name: "v1", sections: [{ name: "上", lines: [] }] }],
+    };
+    expect(() => resolveLineTemplate(tpl, 999, "v1")).toThrow("out of range");
   });
 });
 
@@ -283,7 +265,7 @@ describe("validation - applyRescueMarks", () => {
 
 describe("validation - validateRhyme", () => {
   it("非韵脚行应返回 undefined", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const chars = [Tone.Ping].map((tone, i) =>
       createCharNode({ char: "安", line: 0, col: i, global: i, tone, rhymeGroup: "一部" }),
     );
@@ -297,7 +279,7 @@ describe("validation - validateRhyme", () => {
   });
 
   it("韵脚行无前置韵脚应返回有效结果", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const chars = [Tone.Ping].map((tone, i) =>
       createCharNode({ char: "安", line: 0, col: i, global: i, tone, rhymeGroup: "一部" }),
     );
@@ -379,7 +361,7 @@ describe("pipeline - lexStep", () => {
 
 describe("pipeline - annotateStep", () => {
   it("应正确标注字符", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const template = loadMeterTemplates()[0];
     const { lexResult } = lexStep("白日依山尽，\n黄河入海流。", template);
     const annotation = annotateStep(lexResult, dict);
@@ -391,7 +373,7 @@ describe("pipeline - annotateStep", () => {
 
 describe("pipeline - buildAst", () => {
   it("应正确构建 AST", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const template = loadMeterTemplates()[0];
     const { lexResult } = lexStep("白日依山尽，\n黄河入海流。", template);
     const annotation = annotateStep(lexResult, dict);
@@ -406,7 +388,7 @@ describe("pipeline - buildAst", () => {
 
 describe("ast - annotateLineText", () => {
   it("空文本应返回空字符", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const result = annotateLineText("", dict);
     expect(result.chars).toEqual([]);
     expect(result.ambiguities).toEqual([]);
@@ -452,7 +434,7 @@ describe("ci - chooseCiVariant 指定变体成功路径", () => {
 
 describe("stream - rhyme_unresolved 路径", () => {
   it("韵位的未知字符应返回 rhyme_unresolved", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const meter = loadMeterTemplates().find((m) => m.id === "wujue-pingqi")!;
     // wujue-pingqi: sentenceIndex=1 末字为韵位, sentenceIndex=3 末字为韵位
     // 输入一个完全查不到的字符在韵位
@@ -469,7 +451,7 @@ describe("stream - rhyme_unresolved 路径", () => {
 
 describe("rescue - 边角条件", () => {
   it("三四互救：短于4字的行不应触发", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const { analyzeRescue } = await import("../src/rescue/index.js");
     // 3字行
     const upperChars = [Tone.Ze, Tone.Ping, Tone.Ping].map((t, i) =>
@@ -529,13 +511,13 @@ describe("lexer - 标点标准化", () => {
 
 describe("rhyme-dict - 所有韵书类型", () => {
   it("平水韵应支持基本查询", async () => {
-    const dict = await createRhymeDict("pingshui");
+    const dict = await createRhymeDict("pingshui", "./data");
     const entries = dict.lookup("天");
     expect(Array.isArray(entries)).toBe(true);
   });
 
   it("中华新韵应支持基本查询", async () => {
-    const dict = await createRhymeDict("zhonghua_new");
+    const dict = await createRhymeDict("zhonghua_new", "./data");
     const entries = dict.lookup("天");
     expect(Array.isArray(entries)).toBe(true);
   });

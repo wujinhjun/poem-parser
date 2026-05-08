@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { analyze } from "../src/index.js";
+import { analyze } from "./_helpers.js";
 import { DENG_GUANQUE_LOU } from "./fixtures/deng-guanque-lou.js";
 
 describe("五绝·王之涣《登鹳雀楼》", () => {

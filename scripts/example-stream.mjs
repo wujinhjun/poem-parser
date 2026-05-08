@@ -1,12 +1,16 @@
-import { analyzeStream } from '../dist/analyzer/stream.js';
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { analyzeStreamSync } from "../dist/kernel.js";
+import { createRhymeDict } from "../dist/rhyme-dict/loader.js";
+
+const DATA_DIR = resolve("./data");
 
 async function main() {
-  // 测试：苏轼《水调歌头》前60字
+  const dict = await createRhymeDict("cilin", DATA_DIR);
+  const template = JSON.parse(readFileSync(resolve(DATA_DIR, "ci-tunes-bundle.json"), "utf8"))["水调歌头"];
+
   const text = '明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在';
-  const result = await analyzeStream(text, '水调歌头', {
-    variantId: '水调歌头-v3',
-    rhymeDictType: 'cilin',
-  });
+  const result = analyzeStreamSync(text, template, dict, { variantId: "水调歌头-v3" });
 
   console.log('=== 流式解析结果 ===');
   console.log(`模板: ${result.templateId}`);

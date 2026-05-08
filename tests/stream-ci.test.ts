@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { analyzeStream } from "../src/analyzer/stream.js";
-import { analyze } from "../src/index.js";
+import { analyzeStream } from "./_helpers.js";
+import { analyze } from "./_helpers.js";
 
 // 基于苏轼《水调歌头》
 const SHUIDIAOGETOU_TEXT = [

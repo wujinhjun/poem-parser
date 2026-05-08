@@ -5,7 +5,7 @@ import type { CoupletNode, LineNode } from "../src/core/types.js";
 import { createCharNode } from "../src/core/factories.js";
 import type { MeterTemplate } from "../src/templates/index.js";
 import { loadMeterTemplates } from "../src/templates/index.js";
-import { createRhymeDict } from "../src/rhyme-dict/index.js";
+import { createRhymeDict } from "../src/rhyme-dict/loader.js";
 
 /** 构造指定平仄的字符节点 */
 function makeChars(tones: (Tone | null)[]): LineNode["chars"] {
@@ -66,7 +66,7 @@ function makeTemplate(pattern: ToneConstraint[][]): MeterTemplate {
 
 describe("rescue 模块 - analyzeRescue", () => {
   it("应正确处理全部合律（无拗救）", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // 使用全固定平声的模板，上下句全平 → 完全合律
     const pattern: ToneConstraint[][] = [
       [
@@ -100,7 +100,7 @@ describe("rescue 模块 - analyzeRescue", () => {
 
 describe("rescue 模块 - 本句自救 (benju-zijiou)", () => {
   it("应检测本句自救：单处失粘 + 其他位置合律", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // pattern: 固定平, 固定仄, 固定平, 固定仄, 韵
     const pattern: ToneConstraint[][] = [
       [
@@ -140,7 +140,7 @@ describe("rescue 模块 - 本句自救 (benju-zijiou)", () => {
 
 describe("rescue 模块 - 三四互救 (sansi-hujiou)", () => {
   it("应检测三四互救：第三、四字均失粘", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // 7字句 pattern
     const pattern: ToneConstraint[][] = [
       [
@@ -188,7 +188,7 @@ describe("rescue 模块 - 三四互救 (sansi-hujiou)", () => {
 
 describe("rescue 模块 - 对句相救 (duiju-xiangjiou)", () => {
   it("应检测对句相救：出句失粘 + 对句同位合律", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const pattern: ToneConstraint[][] = [
       [
         { type: "fixed", tone: Tone.Ze },
@@ -227,7 +227,7 @@ describe("rescue 模块 - 对句相救 (duiju-xiangjiou)", () => {
 
 describe("rescue 模块 - 孤平救 (guping-jiou)", () => {
   it("应检测孤平救：除韵脚外仅一处平声且失粘", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // 7字句，期望末三字 "仄平韵"
     const pattern: ToneConstraint[][] = [
       [
@@ -274,7 +274,7 @@ describe("rescue 模块 - 孤平救 (guping-jiou)", () => {
   });
 
   it("非孤平（多处平声）不应触发孤平救", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const pattern: ToneConstraint[][] = [
       [
         { type: "fixed", tone: Tone.Ze },
@@ -311,7 +311,7 @@ describe("rescue 模块 - 孤平救 (guping-jiou)", () => {
 
 describe("rescue 模块 - 对句也做自救和三四互救", () => {
   it("对句（lower）也能触发自救", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     const pattern: ToneConstraint[][] = [
       [
         { type: "fixed", tone: Tone.Ping },
@@ -350,7 +350,7 @@ describe("rescue 模块 - 对句也做自救和三四互救", () => {
 
 describe("rescue 模块 - 无匹配模板时返回空", () => {
   it("模板不包含该行时应返回空数组", async () => {
-    const dict = await createRhymeDict("cilin");
+    const dict = await createRhymeDict("cilin", "./data");
     // 用只有2行的模板，但注入的 couplet upper.globalLineIndex=0, lower=1
     // 实际模板 pattern 长度为2就能覆盖
     const pattern: ToneConstraint[][] = [

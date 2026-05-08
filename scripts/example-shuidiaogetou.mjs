@@ -1,4 +1,10 @@
-import { analyze, toCLI } from '../dist/index.js';
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { analyzeSync } from "../dist/kernel.js";
+import { createRhymeDict } from "../dist/rhyme-dict/loader.js";
+
+const DATA_DIR = resolve("./data");
+function loadCiBundle() { return JSON.parse(readFileSync(resolve(DATA_DIR, "ci-tunes-bundle.json"), "utf8")); }
 
 const text = [
   '明月几时有？把酒问青天。',
@@ -11,68 +17,11 @@ const text = [
   '但愿人长久，千里共婵娟。',
 ].join('\n');
 
-function printSection(title, result) {
-  console.log(`\n=== ${title} ===`);
-  console.log(`summary: ${result.summary}`);
-  console.log(
-    `bestMatch: ${result.bestMatch ? result.bestMatch.templateId : 'null'}`,
-  );
-  console.log(
-    `confidence: ${result.bestMatch ? (result.bestMatch.confidence * 100).toFixed(1) + '%' : 'n/a'}`,
-  );
-  console.log(`ast.type: ${result.ast.type}`);
-  console.log(`lines: ${result.ast.lines.length}`);
-  console.log(
-    `sections: ${
-      result.ast.sections
-        ?.map((section) => `${section.name}:${section.lines.length}`)
-        .join(' | ') ?? '(none)'
-    }`,
-  );
-  console.log(
-    `rhymeChars: ${
-      result.ast.lines
-        .filter((line) => line.isRhymeLine)
-        .map((line) => line.rhymeChar?.char ?? '')
-        .join(', ') || '(none)'
-    }`,
-  );
-  console.log(
-    `ambiguities: ${result.ambiguities.map((item) => item.char).join(', ') || '(none)'}`,
-  );
-  console.log(`isCompliant: ${result.isCompliant}`);
-  console.log(`fullyCompliant: ${result.fullyCompliant} (排除多音字后)`);
-  console.log(`complianceRate: ${(result.complianceRate * 100).toFixed(1)}%`);
-  console.log('lineValidations:');
-  result.lineValidations.forEach((item) => {
-    const ambiguousChars = item.charChecks.filter((check) => check.isAmbiguous);
-    const ambiguityNote = ambiguousChars.length > 0
-      ? ` [多音字: ${ambiguousChars.map(c => `字${c.col+1}「${c.char}」`).join(', ')}]`
-      : '';
+const dict = await createRhymeDict("cilin", DATA_DIR);
+const template = loadCiBundle()["水调歌头"];
+const result = analyzeSync(text, template, dict, { variantId: "水调歌头-v3" });
 
-    console.log(
-      `  line ${item.lineIndex + 1}: ${item.matchedCount}/${item.checkableCount} matched, mismatches=${item.mismatchCount}${ambiguityNote}, compliant=${item.isCompliant}`,
-    );
-
-    const mismatchDetails = item.charChecks.filter((check) => !check.matched);
-    if (mismatchDetails.length > 0) {
-      mismatchDetails.forEach((check) => {
-        const ambTag = check.isAmbiguous ? ' [多音字]' : '';
-        console.log(
-          `    - 字${check.col + 1}「${check.char}」 expected=${check.expected}, actual=${check.actual}, reason=${check.reason ?? 'n/a'}${ambTag}`,
-        );
-      });
-    }
-  });
-  console.log('\n--- CLI ---');
-  console.log(toCLI(result));
-}
-
-const specifiedResult = await analyze(text, {
-  rhymeDictType: 'cilin',
-  preferredType: 'ci',
-  templateId: '水调歌头',
-  variantId: '水调歌头-v3',
-  strictMode: true,
-});
-printSection('指定模板（水调歌头）', specifiedResult);
+console.log(`模板: ${result.bestMatch?.templateId}`);
+console.log(`合律率: ${(result.complianceRate * 100).toFixed(1)}%`);
+console.log(`完全合律: ${result.fullyCompliant}`);
+console.log(`韵脚: ${result.ast.lines.filter((l) => l.isRhymeLine).map((l) => l.rhymeChar?.char).join(" ")}`);
