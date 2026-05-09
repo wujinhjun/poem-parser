@@ -6,7 +6,13 @@ settings:
 
 importers:
 
-  .:
+  .: {}
+
+  apps/rn: {}
+
+  apps/web: {}
+
+  packages/parser:
     devDependencies:
       '@types/node':
         specifier: ^24.0.0
@@ -20,6 +26,14 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@24.12.2)
+
+  packages/shared:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.0
+        version: 5.9.3
+
+  tools/agent: {}
 
 packages:
 

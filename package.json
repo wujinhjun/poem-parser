@@ -1,21 +1,11 @@
 {
-  "name": "poem-parser",
+  "name": "poem-workspace",
   "version": "0.0.1",
   "private": true,
-  "type": "module",
   "scripts": {
-    "clean:data": "node scripts/clean-data.mjs",
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run",
-    "example:denggao": "pnpm build && node scripts/example-denggao.mjs",
-    "example:shuidiao": "pnpm build && node scripts/example-shuidiaogetou.mjs",
-    "examples": "pnpm build && node examples/run.mjs"
-  },
-  "devDependencies": {
-    "@types/node": "^24.0.0",
-    "@vitest/coverage-v8": "^3.2.4",
-    "typescript": "^5.9.0",
-    "vitest": "^3.2.4"
+    "build": "pnpm -r --filter './packages/*' build",
+    "typecheck": "pnpm -r --filter './packages/*' typecheck",
+    "test": "pnpm -r --filter './packages/*' test",
+    "examples": "pnpm --filter @poem/parser examples"
   }
 }
